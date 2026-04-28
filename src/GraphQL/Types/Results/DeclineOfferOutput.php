@@ -7,7 +7,7 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 /**
  * Union: DeclineOfferSent | OfferBusinessRulesViolated | ReferenceArgumentsNotFound
  */
-abstract class DeclineOfferOutput
+abstract readonly class DeclineOfferOutput
 {
     abstract public function getTypename(): string;
 

@@ -7,7 +7,7 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 readonly class OfferBusinessRulesViolated
 {
     /**
-     * @param array<array{ruleDescription: string}> $violations
+     * @param BusinessRuleViolation[] $violations
      */
     public function __construct(
         public string $errorCode,
@@ -25,7 +25,10 @@ readonly class OfferBusinessRulesViolated
         return new self(
             errorCode: $data['errorCode'],
             errorMessage: $data['errorMessage'],
-            violations: $data['violations'] ?? [],
+            violations: array_map(
+                fn(array $v) => BusinessRuleViolation::fromArray($v),
+                $data['violations'] ?? []
+            ),
         );
     }
 }

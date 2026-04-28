@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 
-readonly class DeclineOfferSent
+readonly class DeclineOfferSent extends DeclineOfferOutput
 {
     public function __construct(
         public NegotiationOfferDetails $offer,

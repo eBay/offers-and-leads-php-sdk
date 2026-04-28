@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 
-readonly class AcceptOfferSent
+readonly class AcceptOfferSent extends AcceptOfferOutput
 {
     public function __construct(
         public NegotiationOfferDetails $offer,
-        public ?array $purchaseReference = null,
+        public ?PurchaseReference $purchaseReference = null,
     ) {}
 
     public function getTypename(): string
@@ -20,7 +20,9 @@ readonly class AcceptOfferSent
     {
         return new self(
             offer: NegotiationOfferDetails::fromArray($data['offer']),
-            purchaseReference: $data['purchaseReference'] ?? null,
+            purchaseReference: isset($data['purchaseReference'])
+                ? PurchaseReference::fromArray($data['purchaseReference'])
+                : null,
         );
     }
 }

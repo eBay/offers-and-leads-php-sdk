@@ -7,7 +7,7 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 /**
  * Union: AcceptOfferSent | OfferBusinessRulesViolated | ReferenceArgumentsNotFound
  */
-abstract class AcceptOfferOutput
+abstract readonly class AcceptOfferOutput
 {
     abstract public function getTypename(): string;
 
