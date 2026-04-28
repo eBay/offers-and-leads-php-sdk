@@ -17,6 +17,14 @@ final class OffersAndLeadsConfiguration
 
     public bool $diagnosticLogging = false;
 
+    /** Default headers sent with every request; per-call RequestOptions can override/extend. */
+    public RequestOptions $defaultRequestOptions;
+
+    public function __construct()
+    {
+        $this->defaultRequestOptions = new RequestOptions();
+    }
+
     /** Hostnames tokens may be sent to — passed to AllowedHostsValidator. */
     public function getAllowedHosts(): array
     {

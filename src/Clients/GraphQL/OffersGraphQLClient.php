@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace EBay\OffersAndLeads\Clients\GraphQL;
 
+use EBay\OffersAndLeads\Configuration\RequestOptions;
 use EBay\OffersAndLeads\GraphQL\Operations\OfferOperations;
 use EBay\OffersAndLeads\GraphQL\Types\Inputs\AcceptOfferInput;
 use EBay\OffersAndLeads\GraphQL\Types\Inputs\DeclineOfferInput;
@@ -25,12 +26,16 @@ final class OffersGraphQLClient
      *
      * @return AcceptOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
      */
-    public function acceptOffer(AcceptOfferInput $input, ?string $accessToken = null): AcceptOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
-    {
+    public function acceptOffer(
+        AcceptOfferInput $input,
+        ?string $accessToken = null,
+        ?RequestOptions $requestOptions = null,
+    ): AcceptOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
         $data = $this->dynamic->execute(
             OfferOperations::ACCEPT_OFFER,
             ['input' => $input->toArray()],
-            $accessToken
+            $accessToken,
+            $requestOptions,
         );
         return AcceptOfferOutput::fromArray($data['acceptOffer']);
     }
@@ -40,12 +45,16 @@ final class OffersGraphQLClient
      *
      * @return DeclineOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
      */
-    public function declineOffer(DeclineOfferInput $input, ?string $accessToken = null): DeclineOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
-    {
+    public function declineOffer(
+        DeclineOfferInput $input,
+        ?string $accessToken = null,
+        ?RequestOptions $requestOptions = null,
+    ): DeclineOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
         $data = $this->dynamic->execute(
             OfferOperations::DECLINE_OFFER,
             ['input' => $input->toArray()],
-            $accessToken
+            $accessToken,
+            $requestOptions,
         );
         return DeclineOfferOutput::fromArray($data['declineOffer']);
     }
@@ -56,11 +65,13 @@ final class OffersGraphQLClient
     public function sellerNegotiationHistory(
         SellerNegotiationHistoryInput $input,
         ?string $accessToken = null,
+        ?RequestOptions $requestOptions = null,
     ): SellerNegotiationHistoryOutput {
         $data = $this->dynamic->execute(
             OfferOperations::SELLER_NEGOTIATION_HISTORY,
             ['input' => $input->toArray()],
-            $accessToken
+            $accessToken,
+            $requestOptions,
         );
         return SellerNegotiationHistoryOutput::fromArray($data['sellerNegotiationHistory']);
     }
@@ -71,8 +82,12 @@ final class OffersGraphQLClient
      * @param  array<string, mixed> $variables
      * @return array<string, mixed>
      */
-    public function executeRaw(string $query, array $variables = [], ?string $accessToken = null): array
-    {
-        return $this->dynamic->execute($query, $variables, $accessToken);
+    public function executeRaw(
+        string $query,
+        array $variables = [],
+        ?string $accessToken = null,
+        ?RequestOptions $requestOptions = null,
+    ): array {
+        return $this->dynamic->execute($query, $variables, $accessToken, $requestOptions);
     }
 }
