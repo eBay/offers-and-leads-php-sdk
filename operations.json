@@ -1,0 +1,15 @@
+{
+  "rest": {
+    "sell_feed_v1_oas3": [
+      "getAllClassifiedLeads",
+      "getClassifiedLeadsByItemId"
+    ]
+  },
+  "graphql": {
+    "eBay_Graph": [
+      "acceptOffer",
+      "declineOffer",
+      "sellerNegotiationHistory"
+    ]
+  }
+}
