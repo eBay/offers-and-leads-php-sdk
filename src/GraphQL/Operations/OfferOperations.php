@@ -80,46 +80,48 @@ final class OfferOperations
     public const SELLER_NEGOTIATION_HISTORY = <<<'GRAPHQL'
         query SellerNegotiationHistory($input: SellerNegotiationHistoryInput!) {
             sellerNegotiationHistory(input: $input) {
-                itemNegotiations {
-                    item {
-                        itemId
-                        title
-                    }
-                    negotiations {
-                        negotiationId
-                        latestOffer {
-                            offerId
-                            status
-                            offerCreatorRole
-                            createdAt
-                            updatedAt
-                            expiresAt
-                            message
-                            quantity
-                            offerPrice {
-                                original { value currency }
-                                converted { value currency }
+                __typename
+                ... on SellerNegotiationHistorySuccess {
+                    itemNegotiations {
+                        item {
+                            itemId
+                        }
+                        negotiations {
+                            negotiationId
+                            latestOffer {
+                                offerId
+                                status
+                                offerCreatorRole
+                                createdAt
+                                updatedAt
+                                expiresAt
+                                message
+                                quantity
+                                offerPrice {
+                                    original { value currency }
+                                    converted { value currency }
+                                }
+                            }
+                            offers {
+                                offerId
+                                status
+                                offerCreatorRole
+                                createdAt
+                                updatedAt
+                                expiresAt
+                                message
+                                quantity
+                                offerPrice {
+                                    original { value currency }
+                                    converted { value currency }
+                                }
                             }
                         }
-                        offers {
-                            offerId
-                            status
-                            offerCreatorRole
-                            createdAt
-                            updatedAt
-                            expiresAt
-                            message
-                            quantity
-                            offerPrice {
-                                original { value currency }
-                                converted { value currency }
-                            }
-                        }
                     }
-                }
-                pagination {
-                    nextCursor
-                    previousCursor
+                    pagination {
+                        nextCursor
+                        previousCursor
+                    }
                 }
             }
         }

@@ -16,6 +16,15 @@ readonly class SellerNegotiationHistoryOutput
 
     public static function fromArray(array $data): self
     {
+        // The schema returns a union (SellerNegotiationHistoryOutput = SellerNegotiationHistorySuccess).
+        // The query selects __typename + inline fragment, so $data contains the flattened
+        // SellerNegotiationHistorySuccess fields at the top level.
+        if (($data['__typename'] ?? null) !== null && ($data['__typename'] ?? null) !== 'SellerNegotiationHistorySuccess') {
+            throw new \UnexpectedValueException(
+                'Unknown __typename for SellerNegotiationHistoryOutput: ' . $data['__typename']
+            );
+        }
+
         return new self(
             itemNegotiations: array_map(
                 fn(array $i) => ItemNegotiation::fromArray($i),
