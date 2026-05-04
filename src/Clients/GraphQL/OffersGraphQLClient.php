@@ -7,12 +7,20 @@ namespace EBay\OffersAndLeads\Clients\GraphQL;
 use EBay\OffersAndLeads\Configuration\RequestOptions;
 use EBay\OffersAndLeads\GraphQL\Operations\OfferOperations;
 use EBay\OffersAndLeads\GraphQL\Types\Inputs\AcceptOfferInput;
+use EBay\OffersAndLeads\GraphQL\Types\Inputs\BuyerNegotiationHistoryInput;
+use EBay\OffersAndLeads\GraphQL\Types\Inputs\CounterOfferInput;
 use EBay\OffersAndLeads\GraphQL\Types\Inputs\DeclineOfferInput;
+use EBay\OffersAndLeads\GraphQL\Types\Inputs\MakeOfferInput;
 use EBay\OffersAndLeads\GraphQL\Types\Inputs\SellerNegotiationHistoryInput;
 use EBay\OffersAndLeads\GraphQL\Types\Results\AcceptOfferOutput;
 use EBay\OffersAndLeads\GraphQL\Types\Results\AcceptOfferSent;
+use EBay\OffersAndLeads\GraphQL\Types\Results\BuyerNegotiationHistoryOutput;
+use EBay\OffersAndLeads\GraphQL\Types\Results\CounterOfferOutput;
+use EBay\OffersAndLeads\GraphQL\Types\Results\CounterOfferSent;
 use EBay\OffersAndLeads\GraphQL\Types\Results\DeclineOfferOutput;
 use EBay\OffersAndLeads\GraphQL\Types\Results\DeclineOfferSent;
+use EBay\OffersAndLeads\GraphQL\Types\Results\MakeOfferOutput;
+use EBay\OffersAndLeads\GraphQL\Types\Results\MakeOfferSent;
 use EBay\OffersAndLeads\GraphQL\Types\Results\OfferBusinessRulesViolated;
 use EBay\OffersAndLeads\GraphQL\Types\Results\ReferenceArgumentsNotFound;
 use EBay\OffersAndLeads\GraphQL\Types\Results\SellerNegotiationHistoryOutput;
@@ -74,6 +82,61 @@ final class OffersGraphQLClient
             $requestOptions,
         );
         return SellerNegotiationHistoryOutput::fromArray($data['sellerNegotiationHistory']);
+    }
+
+    /**
+     * Counter an active offer with a new price.
+     *
+     * @return CounterOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
+     */
+    public function counterOffer(
+        CounterOfferInput $input,
+        ?string $accessToken = null,
+        ?RequestOptions $requestOptions = null,
+    ): CounterOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
+        $data = $this->dynamic->execute(
+            OfferOperations::COUNTER_OFFER,
+            ['input' => $input->toArray()],
+            $accessToken,
+            $requestOptions,
+        );
+        return CounterOfferOutput::fromArray($data['counterOffer']);
+    }
+
+    /**
+     * Make an offer on a listing.
+     *
+     * @return MakeOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
+     */
+    public function makeOffer(
+        MakeOfferInput $input,
+        ?string $accessToken = null,
+        ?RequestOptions $requestOptions = null,
+    ): MakeOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
+        $data = $this->dynamic->execute(
+            OfferOperations::MAKE_OFFER,
+            ['input' => $input->toArray()],
+            $accessToken,
+            $requestOptions,
+        );
+        return MakeOfferOutput::fromArray($data['makeOffer']);
+    }
+
+    /**
+     * Retrieve the buyer's negotiation history grouped by item.
+     */
+    public function buyerNegotiationHistory(
+        BuyerNegotiationHistoryInput $input,
+        ?string $accessToken = null,
+        ?RequestOptions $requestOptions = null,
+    ): BuyerNegotiationHistoryOutput {
+        $data = $this->dynamic->execute(
+            OfferOperations::BUYER_NEGOTIATION_HISTORY,
+            ['input' => $input->toArray()],
+            $accessToken,
+            $requestOptions,
+        );
+        return BuyerNegotiationHistoryOutput::fromArray($data['buyerNegotiationHistory']);
     }
 
     /**

@@ -13,20 +13,28 @@ final class OfferOperations
                 ... on AcceptOfferSent {
                     offer {
                         offerId
-                        status
                         offerCreatorRole
-                        createdAt
-                        updatedAt
-                        expiresAt
-                        message
-                        quantity
+                        status
+                        offerCreatorUser {
+                            shippingZone {
+                                postalCode
+                            }
+                        }
                         offerPrice {
                             original { value currency }
                             converted { value currency }
                         }
+                        quantity
+                        createdAt
+                        updatedAt
+                        expiresAt
+                        message
                     }
                     purchaseReference {
-                        __typename
+                        ... on ItemCommitment {
+                            __typename
+                            itemCommitmentId
+                        }
                     }
                 }
                 ... on OfferBusinessRulesViolated {
@@ -51,16 +59,6 @@ final class OfferOperations
                     offer {
                         offerId
                         status
-                        offerCreatorRole
-                        createdAt
-                        updatedAt
-                        expiresAt
-                        message
-                        quantity
-                        offerPrice {
-                            original { value currency }
-                            converted { value currency }
-                        }
                     }
                 }
                 ... on OfferBusinessRulesViolated {
@@ -80,48 +78,159 @@ final class OfferOperations
     public const SELLER_NEGOTIATION_HISTORY = <<<'GRAPHQL'
         query SellerNegotiationHistory($input: SellerNegotiationHistoryInput!) {
             sellerNegotiationHistory(input: $input) {
+                itemNegotiations {
+                    item {
+                        itemId
+                    }
+                    negotiations {
+                        negotiationId
+                        offers {
+                            offerId
+                            status
+                            offerCreatorRole
+                            offerPrice {
+                                original { value currency }
+                                converted { value currency }
+                            }
+                            quantity
+                            createdAt
+                            updatedAt
+                            expiresAt
+                            message
+                        }
+                        latestOffer {
+                            offerId
+                            status
+                            offerCreatorRole
+                            quantity
+                            offerPrice {
+                                original { value currency }
+                                converted { value currency }
+                            }
+                            createdAt
+                            updatedAt
+                            expiresAt
+                        }
+                        offerCapabilities {
+                            negotiable
+                        }
+                        target {
+                            ... on Item {
+                                itemId
+                            }
+                        }
+                    }
+                }
+                pagination {
+                    nextCursor
+                    previousCursor
+                }
+            }
+        }
+        GRAPHQL;
+
+    public const BUYER_NEGOTIATION_HISTORY = <<<'GRAPHQL'
+        query BuyerNegotiationHistory($input: BuyerNegotiationHistoryInput!) {
+            buyerNegotiationHistory(input: $input) {
+                itemNegotiations {
+                    negotiations {
+                        negotiationId
+                        offers {
+                            offerId
+                            status
+                            offerCreatorRole
+                            offerPrice {
+                                original { currency value }
+                                converted { currency value }
+                            }
+                            quantity
+                            createdAt
+                            updatedAt
+                            expiresAt
+                            message
+                        }
+                        latestOffer {
+                            offerId
+                            status
+                            offerCreatorRole
+                            quantity
+                            offerPrice {
+                                original { currency value }
+                                converted { currency value }
+                            }
+                            createdAt
+                            updatedAt
+                            expiresAt
+                        }
+                    }
+                }
+            }
+        }
+        GRAPHQL;
+
+    public const COUNTER_OFFER = <<<'GRAPHQL'
+        mutation CounterOffer($input: CounterOfferInput!) {
+            counterOffer(input: $input) {
                 __typename
-                ... on SellerNegotiationHistorySuccess {
-                    itemNegotiations {
-                        item {
-                            itemId
+                ... on CounterOfferSent {
+                    offer {
+                        offerId
+                        offerCreatorRole
+                        status
+                        offerPrice {
+                            original { value currency }
+                            converted { value currency }
                         }
-                        negotiations {
-                            negotiationId
-                            latestOffer {
-                                offerId
-                                status
-                                offerCreatorRole
-                                createdAt
-                                updatedAt
-                                expiresAt
-                                message
-                                quantity
-                                offerPrice {
-                                    original { value currency }
-                                    converted { value currency }
-                                }
-                            }
-                            offers {
-                                offerId
-                                status
-                                offerCreatorRole
-                                createdAt
-                                updatedAt
-                                expiresAt
-                                message
-                                quantity
-                                offerPrice {
-                                    original { value currency }
-                                    converted { value currency }
-                                }
-                            }
+                        quantity
+                        createdAt
+                        updatedAt
+                        expiresAt
+                        message
+                    }
+                }
+                ... on OfferBusinessRulesViolated {
+                    errorCode
+                    errorMessage
+                    violations { ruleDescription }
+                }
+                ... on ReferenceArgumentsNotFound {
+                    errorCode
+                    errorMessage
+                    argumentNames
+                }
+            }
+        }
+        GRAPHQL;
+
+    public const MAKE_OFFER = <<<'GRAPHQL'
+        mutation MakeOffer($input: MakeOfferInput!) {
+            makeOffer(input: $input) {
+                __typename
+                ... on MakeOfferSent {
+                    offer {
+                        offerId
+                        offerCreatorRole
+                        status
+                        offerPrice {
+                            original { value currency }
+                            converted { value currency }
                         }
+                        quantity
+                        createdAt
+                        updatedAt
+                        expiresAt
+                        message
                     }
-                    pagination {
-                        nextCursor
-                        previousCursor
-                    }
+                }
+                ... on OfferBusinessRulesViolated {
+                    errorCode
+                    errorMessage
+                    violations { ruleDescription }
+                }
+                ... on ReferenceArgumentsNotFound {
+                    errorCode
+                    errorMessage
+                    argumentNames
                 }
             }
         }
