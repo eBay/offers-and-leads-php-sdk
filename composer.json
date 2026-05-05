@@ -1,29 +1,32 @@
 {
-  "name": "ebay/offers-and-leads-php-sdk",
-  "description": "OffersAndLeads PHP SDK",
-  "type": "library",
-  "require": {
-    "php": ">=8.2",
-    "microsoft/kiota-abstractions": "^2.0",
-    "microsoft/kiota-http-guzzle": "^2.0",
-    "microsoft/kiota-serialization-json": "^2.0",
-    "microsoft/kiota-serialization-form": "^2.0",
-    "microsoft/kiota-serialization-multipart": "^2.0",
-    "microsoft/kiota-serialization-text": "^2.0",
-    "guzzlehttp/guzzle": "^7.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^11.0",
-    "phpstan/phpstan": "^1.10"
-  },
-  "autoload": {
-    "psr-4": {
-      "EBay\\OffersAndLeads\\": "src/"
+    "name": "ebay/offers-and-leads-php-sdk",
+    "description": "OffersAndLeads PHP SDK",
+    "type": "library",
+    "require": {
+        "php": ">=8.2",
+        "microsoft/kiota-abstractions": "^2.0",
+        "microsoft/kiota-http-guzzle": "^2.0",
+        "microsoft/kiota-serialization-json": "^2.0",
+        "microsoft/kiota-serialization-form": "^2.0",
+        "microsoft/kiota-serialization-multipart": "^2.0",
+        "microsoft/kiota-serialization-text": "^2.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "EBay\\OffersAndLeads\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EBay\\OffersAndLeads\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "analyse": "phpstan analyse"
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "EBay\\OffersAndLeads\\Tests\\": "tests/"
-    }
-  }
 }
