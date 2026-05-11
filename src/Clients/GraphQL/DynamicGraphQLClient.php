@@ -60,7 +60,22 @@ final class DynamicGraphQLClient
         $body = json_decode($rawBody, true, 512, JSON_THROW_ON_ERROR);
 
         if (!empty($body['errors'])) {
-            throw new GraphQLException(array_column($body['errors'], 'message'));
+            $messages = [];
+            foreach ($body['errors'] as $err) {
+                $parts   = [$err['message'] ?? 'Unknown GraphQL error'];
+                $details = [];
+                if (!empty($err['extensions'])) {
+                    $details[] = json_encode($err['extensions'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+                }
+                if (!empty($err['path'])) {
+                    $details[] = 'path=' . json_encode($err['path'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+                }
+                if ($details !== []) {
+                    $parts[] = implode(' ', $details);
+                }
+                $messages[] = implode(' — ', $parts);
+            }
+            throw new GraphQLException($messages);
         }
 
         return $body['data'] ?? [];

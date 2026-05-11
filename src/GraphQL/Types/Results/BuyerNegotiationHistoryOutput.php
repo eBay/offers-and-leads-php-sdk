@@ -11,6 +11,7 @@ readonly class BuyerNegotiationHistoryOutput
      */
     public function __construct(
         public array $itemNegotiations,
+        public ?Pagination $pagination = null,
     ) {}
 
     public static function fromArray(array $data): self
@@ -20,6 +21,7 @@ readonly class BuyerNegotiationHistoryOutput
                 fn(array $i) => ItemNegotiation::fromArray($i),
                 $data['itemNegotiations'] ?? []
             ),
+            pagination: isset($data['pagination']) ? Pagination::fromArray($data['pagination']) : null,
         );
     }
 }

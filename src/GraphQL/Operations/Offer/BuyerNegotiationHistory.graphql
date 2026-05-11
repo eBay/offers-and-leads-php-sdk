@@ -1,35 +1,53 @@
 query BuyerNegotiationHistory($input: BuyerNegotiationHistoryInput!) {
     buyerNegotiationHistory(input: $input) {
-        itemNegotiations {
-            negotiations {
-                negotiationId
-                offers {
-                    offerId
-                    status
-                    offerCreatorRole
-                    offerPrice {
-                        original { currency value }
-                        converted { currency value }
-                    }
-                    quantity
-                    createdAt
-                    updatedAt
-                    expiresAt
-                    message
+        __typename
+        ... on BuyerNegotiationHistorySuccess {
+            itemNegotiations {
+                item {
+                    itemId
                 }
-                latestOffer {
-                    offerId
-                    status
-                    offerCreatorRole
-                    quantity
-                    offerPrice {
-                        original { currency value }
-                        converted { currency value }
+                negotiations {
+                    negotiationId
+                    offers {
+                        offerId
+                        status
+                        offerCreatorRole
+                        offerPrice {
+                            original { value currency }
+                            converted { value currency }
+                        }
+                        quantity
+                        createdAt
+                        updatedAt
+                        expiresAt
+                        message
                     }
-                    createdAt
-                    updatedAt
-                    expiresAt
+                    latestOffer {
+                        offerId
+                        status
+                        offerCreatorRole
+                        quantity
+                        offerPrice {
+                            original { value currency }
+                            converted { value currency }
+                        }
+                        createdAt
+                        updatedAt
+                        expiresAt
+                    }
+                    offerCapabilities {
+                        negotiable
+                    }
+                    target {
+                        ... on Item {
+                            itemId
+                        }
+                    }
                 }
+            }
+            pagination {
+                nextCursor
+                previousCursor
             }
         }
     }

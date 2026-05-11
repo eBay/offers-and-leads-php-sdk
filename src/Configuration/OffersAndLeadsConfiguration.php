@@ -7,7 +7,7 @@ namespace EBay\OffersAndLeads\Configuration;
 final class OffersAndLeadsConfiguration
 {
     /** Base URL for the Classified Leads REST API. */
-    public string $leadsBaseUrl = 'https://apiz.ebay.com';
+    public string $leadsBaseUrl = 'https://apiz.ebay.com/sell/leads/v1';
 
     /** Base URL for the eBay GraphQL API. */
     public string $graphQLBaseUrl = 'https://api.ebay.com/graphql';
