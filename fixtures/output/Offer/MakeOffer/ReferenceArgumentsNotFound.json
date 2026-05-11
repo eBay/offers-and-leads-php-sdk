@@ -1,0 +1,11 @@
+{
+  "makeOffer": {
+    "__typename": "ReferenceArgumentsNotFound",
+    "errorCode": "Hello World",
+    "errorMessage": "Hello World",
+    "argumentNames": [
+      "Hello World",
+      "Hello World"
+    ]
+  }
+}

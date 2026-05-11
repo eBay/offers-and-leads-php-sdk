@@ -1,0 +1,25 @@
+{
+  "counterOffer": {
+    "__typename": "CounterOfferSent",
+    "offer": {
+      "offerId": "7eda0cf4-f71c-4857-ac09-ee0d62185058",
+      "offerCreatorRole": "SELLER",
+      "status": "ADMIN_ENDED",
+      "offerPrice": {
+        "original": {
+          "value": "1.00",
+          "currency": "SLE"
+        },
+        "converted": {
+          "value": "1.00",
+          "currency": "ALL"
+        }
+      },
+      "quantity": 60,
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "expiresAt": "2024-01-01T00:00:00.000Z",
+      "message": "Hello World"
+    }
+  }
+}

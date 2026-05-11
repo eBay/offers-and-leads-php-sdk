@@ -1,0 +1,25 @@
+{
+  "makeOffer": {
+    "__typename": "MakeOfferSent",
+    "offer": {
+      "offerId": "26a410bb-a9c9-43bc-86ad-5ffafe5f74d0",
+      "offerCreatorRole": "SELLER",
+      "status": "EXPIRED",
+      "offerPrice": {
+        "original": {
+          "value": "1.00",
+          "currency": "UYU"
+        },
+        "converted": {
+          "value": "1.00",
+          "currency": "TND"
+        }
+      },
+      "quantity": 89,
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "expiresAt": "2024-01-01T00:00:00.000Z",
+      "message": "Hello World"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+query SellerNegotiationHistory($input: SellerNegotiationHistoryInput!) {
+    sellerNegotiationHistory(input: $input) {
+        itemNegotiations {
+            item {
+                itemId
+            }
+            negotiations {
+                negotiationId
+                offers {
+                    offerId
+                    status
+                    offerCreatorRole
+                    offerPrice {
+                        original { value currency }
+                        converted { value currency }
+                    }
+                    quantity
+                    createdAt
+                    updatedAt
+                    expiresAt
+                    message
+                }
+                latestOffer {
+                    offerId
+                    status
+                    offerCreatorRole
+                    quantity
+                    offerPrice {
+                        original { value currency }
+                        converted { value currency }
+                    }
+                    createdAt
+                    updatedAt
+                    expiresAt
+                }
+                offerCapabilities {
+                    negotiable
+                }
+                target {
+                    ... on Item {
+                        itemId
+                    }
+                }
+            }
+        }
+        pagination {
+            nextCursor
+            previousCursor
+        }
+    }
+}

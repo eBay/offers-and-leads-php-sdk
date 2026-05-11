@@ -10,6 +10,13 @@ readonly class BuyerNegotiationHistoryInput
         public ?NegotiationHistoryFiltersInput $filters = null,
     ) {}
 
+    public static function fromArray(array $data): self
+    {
+        return new self(
+            filters: isset($data['filters']) ? NegotiationHistoryFiltersInput::fromArray($data['filters']) : null,
+        );
+    }
+
     public function toArray(): array
     {
         return array_filter([

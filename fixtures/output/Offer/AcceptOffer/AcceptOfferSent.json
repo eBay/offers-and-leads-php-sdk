@@ -1,0 +1,34 @@
+{
+  "acceptOffer": {
+    "__typename": "AcceptOfferSent",
+    "offer": {
+      "offerId": "edfbc0b6-fa89-428f-bfe4-a9cf08830f25",
+      "offerCreatorRole": "BUYER",
+      "status": "CANCELED",
+      "offerCreatorUser": {
+        "shippingZone": {
+          "postalCode": "Hello World"
+        }
+      },
+      "offerPrice": {
+        "original": {
+          "value": "1.00",
+          "currency": "EUR"
+        },
+        "converted": {
+          "value": "1.00",
+          "currency": "SGD"
+        }
+      },
+      "quantity": -88,
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "expiresAt": "2024-01-01T00:00:00.000Z",
+      "message": "Hello World"
+    },
+    "purchaseReference": {
+      "__typename": "ItemCommitment",
+      "itemCommitmentId": "902649e0-2931-4e1a-a72c-511826fb15fd"
+    }
+  }
+}

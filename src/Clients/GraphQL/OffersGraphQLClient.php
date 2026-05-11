@@ -40,7 +40,7 @@ final class OffersGraphQLClient
         ?RequestOptions $requestOptions = null,
     ): AcceptOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
         $data = $this->dynamic->execute(
-            OfferOperations::ACCEPT_OFFER,
+            OfferOperations::ACCEPT_OFFER(),
             ['input' => $input->toArray()],
             $accessToken,
             $requestOptions,
@@ -59,7 +59,7 @@ final class OffersGraphQLClient
         ?RequestOptions $requestOptions = null,
     ): DeclineOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
         $data = $this->dynamic->execute(
-            OfferOperations::DECLINE_OFFER,
+            OfferOperations::DECLINE_OFFER(),
             ['input' => $input->toArray()],
             $accessToken,
             $requestOptions,
@@ -76,7 +76,7 @@ final class OffersGraphQLClient
         ?RequestOptions $requestOptions = null,
     ): SellerNegotiationHistoryOutput {
         $data = $this->dynamic->execute(
-            OfferOperations::SELLER_NEGOTIATION_HISTORY,
+            OfferOperations::SELLER_NEGOTIATION_HISTORY(),
             ['input' => $input->toArray()],
             $accessToken,
             $requestOptions,
@@ -95,7 +95,7 @@ final class OffersGraphQLClient
         ?RequestOptions $requestOptions = null,
     ): CounterOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
         $data = $this->dynamic->execute(
-            OfferOperations::COUNTER_OFFER,
+            OfferOperations::COUNTER_OFFER(),
             ['input' => $input->toArray()],
             $accessToken,
             $requestOptions,
@@ -114,7 +114,7 @@ final class OffersGraphQLClient
         ?RequestOptions $requestOptions = null,
     ): MakeOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
         $data = $this->dynamic->execute(
-            OfferOperations::MAKE_OFFER,
+            OfferOperations::MAKE_OFFER(),
             ['input' => $input->toArray()],
             $accessToken,
             $requestOptions,
@@ -131,7 +131,7 @@ final class OffersGraphQLClient
         ?RequestOptions $requestOptions = null,
     ): BuyerNegotiationHistoryOutput {
         $data = $this->dynamic->execute(
-            OfferOperations::BUYER_NEGOTIATION_HISTORY,
+            OfferOperations::BUYER_NEGOTIATION_HISTORY(),
             ['input' => $input->toArray()],
             $accessToken,
             $requestOptions,

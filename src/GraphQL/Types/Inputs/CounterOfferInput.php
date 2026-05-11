@@ -17,6 +17,17 @@ readonly class CounterOfferInput
         public ?string $message = null,
     ) {}
 
+    public static function fromArray(array $data): self
+    {
+        return new self(
+            itemId:        $data['itemId'],
+            offerId:       $data['offerId'],
+            proposedPrice: $data['proposedPrice'],
+            quantity:      $data['quantity'] ?? null,
+            message:       $data['message'] ?? null,
+        );
+    }
+
     public function toArray(): array
     {
         return array_filter([

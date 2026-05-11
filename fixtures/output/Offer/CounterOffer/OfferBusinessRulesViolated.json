@@ -1,0 +1,15 @@
+{
+  "counterOffer": {
+    "__typename": "OfferBusinessRulesViolated",
+    "errorCode": "Hello World",
+    "errorMessage": "Hello World",
+    "violations": [
+      {
+        "ruleDescription": "Hello World"
+      },
+      {
+        "ruleDescription": "Hello World"
+      }
+    ]
+  }
+}

@@ -23,6 +23,17 @@ readonly class NegotiationHistoryFiltersInput
         public ?string $statusFilter = null,
     ) {}
 
+    public static function fromArray(array $data): self
+    {
+        return new self(
+            activeAfter:            $data['activeAfter'] ?? null,
+            activeBefore:           $data['activeBefore'] ?? null,
+            negotiationCreatorRole: $data['negotiationCreatorRole'] ?? null,
+            pagination:             isset($data['pagination']) ? PageInfoInput::fromArray($data['pagination']) : null,
+            statusFilter:           $data['statusFilter'] ?? null,
+        );
+    }
+
     public function toArray(): array
     {
         return array_filter([
