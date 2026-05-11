@@ -1,3 +1,62 @@
 {
-  "input": {}
+  "cases": [
+    {
+      "label": "empty input",
+      "input": {},
+      "expected": {}
+    },
+    {
+      "label": "filters with all null fields serialises as object",
+      "input": {
+        "filters": {
+          "activeAfter": null,
+          "activeBefore": null,
+          "negotiationCreatorRole": null,
+          "statusFilter": null
+        }
+      },
+      "expected": {
+        "filters": {}
+      }
+    },
+    {
+      "label": "filters with date range and creator role",
+      "input": {
+        "filters": {
+          "activeAfter": "2024-06-01T00:00:00.000Z",
+          "activeBefore": "2025-06-01T00:00:00.000Z",
+          "negotiationCreatorRole": "SELLER",
+          "statusFilter": "COMPLETED"
+        }
+      },
+      "expected": {
+        "filters": {
+          "activeAfter": "2024-06-01T00:00:00.000Z",
+          "activeBefore": "2025-06-01T00:00:00.000Z",
+          "negotiationCreatorRole": "SELLER",
+          "statusFilter": "COMPLETED"
+        }
+      }
+    },
+    {
+      "label": "filters with pagination (pageCursor null is stripped)",
+      "input": {
+        "filters": {
+          "statusFilter": "ACTIONABLE",
+          "pagination": {
+            "maxPageSize": 25,
+            "pageCursor": null
+          }
+        }
+      },
+      "expected": {
+        "filters": {
+          "statusFilter": "ACTIONABLE",
+          "pagination": {
+            "maxPageSize": 25
+          }
+        }
+      }
+    }
+  ]
 }

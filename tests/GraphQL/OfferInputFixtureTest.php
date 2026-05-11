@@ -28,12 +28,21 @@ class OfferInputFixtureTest extends TestCase
     }
 
     #[DataProvider('fixtures')]
-    public function testFixtureParsing(string $operation, string $class): void
+    public function testFromArrayToArrayRoundtrip(string $operation, string $class): void
     {
-        $data = json_decode(file_get_contents(self::$fixturesDir . '/' . $operation . '.json'), true);
+        // Decode without assoc so {} stays stdClass (not []) — required to distinguish object vs array.
+        $cases = json_decode(file_get_contents(self::$fixturesDir . '/' . $operation . '.json'))->cases;
 
-        $result = $class::fromArray($data['input']);
+        foreach ($cases as $case) {
+            $input    = json_decode(json_encode($case->input), true); // assoc for fromArray
+            $instance = $class::fromArray($input);
 
-        $this->assertNotNull($result);
+            // (object) cast mirrors the client which passes (object)$input->toArray() as the variable.
+            $this->assertJsonStringEqualsJsonString(
+                json_encode($case->expected),
+                json_encode((object)$instance->toArray()),
+                "Round-trip failed for case: {$case->label}",
+            );
+        }
     }
 }

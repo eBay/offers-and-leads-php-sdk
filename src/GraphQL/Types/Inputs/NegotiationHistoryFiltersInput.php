@@ -40,7 +40,7 @@ readonly class NegotiationHistoryFiltersInput
             'activeAfter'             => $this->activeAfter,
             'activeBefore'            => $this->activeBefore,
             'negotiationCreatorRole'  => $this->negotiationCreatorRole,
-            'pagination'              => $this->pagination?->toArray(),
+            'pagination'              => $this->pagination !== null ? (object)$this->pagination->toArray() : null,
             'statusFilter'            => $this->statusFilter,
         ], fn($v) => $v !== null);
     }

@@ -41,7 +41,7 @@ final class OffersGraphQLClient
     ): AcceptOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
         $data = $this->dynamic->execute(
             OfferOperations::ACCEPT_OFFER(),
-            ['input' => $input->toArray()],
+            ['input' => (object)$input->toArray()],
             $accessToken,
             $requestOptions,
         );
@@ -60,7 +60,7 @@ final class OffersGraphQLClient
     ): DeclineOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
         $data = $this->dynamic->execute(
             OfferOperations::DECLINE_OFFER(),
-            ['input' => $input->toArray()],
+            ['input' => (object)$input->toArray()],
             $accessToken,
             $requestOptions,
         );
@@ -77,7 +77,7 @@ final class OffersGraphQLClient
     ): SellerNegotiationHistoryOutput {
         $data = $this->dynamic->execute(
             OfferOperations::SELLER_NEGOTIATION_HISTORY(),
-            ['input' => $input->toArray()],
+            ['input' => (object)$input->toArray()],
             $accessToken,
             $requestOptions,
         );
@@ -96,7 +96,7 @@ final class OffersGraphQLClient
     ): CounterOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
         $data = $this->dynamic->execute(
             OfferOperations::COUNTER_OFFER(),
-            ['input' => $input->toArray()],
+            ['input' => (object)$input->toArray()],
             $accessToken,
             $requestOptions,
         );
@@ -115,7 +115,7 @@ final class OffersGraphQLClient
     ): MakeOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound {
         $data = $this->dynamic->execute(
             OfferOperations::MAKE_OFFER(),
-            ['input' => $input->toArray()],
+            ['input' => (object)$input->toArray()],
             $accessToken,
             $requestOptions,
         );
@@ -132,7 +132,7 @@ final class OffersGraphQLClient
     ): BuyerNegotiationHistoryOutput {
         $data = $this->dynamic->execute(
             OfferOperations::BUYER_NEGOTIATION_HISTORY(),
-            ['input' => $input->toArray()],
+            ['input' => (object)$input->toArray()],
             $accessToken,
             $requestOptions,
         );

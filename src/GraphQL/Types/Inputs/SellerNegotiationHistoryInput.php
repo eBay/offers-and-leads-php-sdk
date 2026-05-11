@@ -20,7 +20,7 @@ readonly class SellerNegotiationHistoryInput
     public function toArray(): array
     {
         return array_filter([
-            'filters' => $this->filters?->toArray(),
+            'filters' => $this->filters !== null ? (object)$this->filters->toArray() : null,
         ], fn($v) => $v !== null);
     }
 }
