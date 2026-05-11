@@ -2,9 +2,9 @@
   "acceptOffer": {
     "__typename": "AcceptOfferSent",
     "offer": {
-      "offerId": "edfbc0b6-fa89-428f-bfe4-a9cf08830f25",
-      "offerCreatorRole": "BUYER",
-      "status": "CANCELED",
+      "offerId": "73e81834-fcd2-45f6-8367-8501497fc219",
+      "offerCreatorRole": "SELLER",
+      "status": "AUTO_DECLINED",
       "offerCreatorUser": {
         "shippingZone": {
           "postalCode": "Hello World"
@@ -13,14 +13,14 @@
       "offerPrice": {
         "original": {
           "value": "1.00",
-          "currency": "EUR"
+          "currency": "USD"
         },
         "converted": {
           "value": "1.00",
-          "currency": "SGD"
+          "currency": "TWD"
         }
       },
-      "quantity": -88,
+      "quantity": -85,
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z",
       "expiresAt": "2024-01-01T00:00:00.000Z",
@@ -28,7 +28,7 @@
     },
     "purchaseReference": {
       "__typename": "ItemCommitment",
-      "itemCommitmentId": "902649e0-2931-4e1a-a72c-511826fb15fd"
+      "itemCommitmentId": "cb865e91-99e6-4c28-9db4-68e988749423"
     }
   }
 }

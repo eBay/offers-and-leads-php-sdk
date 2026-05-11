@@ -2,20 +2,20 @@
   "makeOffer": {
     "__typename": "MakeOfferSent",
     "offer": {
-      "offerId": "26a410bb-a9c9-43bc-86ad-5ffafe5f74d0",
-      "offerCreatorRole": "SELLER",
-      "status": "EXPIRED",
+      "offerId": "c00263c8-5eb1-490b-ae70-87d1d1c064db",
+      "offerCreatorRole": "BUYER",
+      "status": "CANCELED",
       "offerPrice": {
         "original": {
           "value": "1.00",
-          "currency": "UYU"
+          "currency": "IDR"
         },
         "converted": {
           "value": "1.00",
-          "currency": "TND"
+          "currency": "PKR"
         }
       },
-      "quantity": 89,
+      "quantity": -7,
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z",
       "expiresAt": "2024-01-01T00:00:00.000Z",

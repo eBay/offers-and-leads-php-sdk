@@ -1,0 +1,325 @@
+{
+  "buyerNegotiationHistory": {
+    "__typename": "BuyerNegotiationHistorySuccess",
+    "itemNegotiations": [
+      {
+        "item": {
+          "itemId": "c4721047-9b28-4874-8231-7584dcd85e8f"
+        },
+        "negotiations": [
+          {
+            "negotiationId": "a6849061-ea2e-4379-87bf-b919ac5c79d5",
+            "offers": [
+              {
+                "offerId": "3b3a6558-f4cb-4263-9fad-a5dc6f4219ac",
+                "status": "ADMIN_ENDED",
+                "offerCreatorRole": "SELLER",
+                "offerPrice": {
+                  "original": {
+                    "value": "1.00",
+                    "currency": "DZD"
+                  },
+                  "converted": {
+                    "value": "1.00",
+                    "currency": "TRY"
+                  }
+                },
+                "quantity": -28,
+                "createdAt": "2024-01-01T00:00:00.000Z",
+                "updatedAt": "2024-01-01T00:00:00.000Z",
+                "expiresAt": "2024-01-01T00:00:00.000Z",
+                "message": "Hello World"
+              },
+              {
+                "offerId": "886b3320-696e-450f-aabe-8cf0923e1c14",
+                "status": "DECLINED",
+                "offerCreatorRole": "BUYER",
+                "offerPrice": {
+                  "original": {
+                    "value": "1.00",
+                    "currency": "NIO"
+                  },
+                  "converted": {
+                    "value": "1.00",
+                    "currency": "KGS"
+                  }
+                },
+                "quantity": 92,
+                "createdAt": "2024-01-01T00:00:00.000Z",
+                "updatedAt": "2024-01-01T00:00:00.000Z",
+                "expiresAt": "2024-01-01T00:00:00.000Z",
+                "message": "Hello World"
+              }
+            ],
+            "latestOffer": {
+              "offerId": "4bb9ec4e-13c6-49bf-acd0-5aa2d9414b46",
+              "status": "RETRACTED",
+              "offerCreatorRole": "SELLER",
+              "quantity": 23,
+              "offerPrice": {
+                "original": {
+                  "value": "1.00",
+                  "currency": "LYD"
+                },
+                "converted": {
+                  "value": "1.00",
+                  "currency": "SBD"
+                }
+              },
+              "createdAt": "2024-01-01T00:00:00.000Z",
+              "updatedAt": "2024-01-01T00:00:00.000Z",
+              "expiresAt": "2024-01-01T00:00:00.000Z"
+            },
+            "offerCapabilities": [
+              {
+                "negotiable": false
+              },
+              {
+                "negotiable": false
+              }
+            ],
+            "target": {
+              "itemId": "b1762075-384b-4265-9fdf-b18b4e2ca4eb"
+            }
+          },
+          {
+            "negotiationId": "a78ed0a9-2f3e-451c-a4df-61d9e27c6c12",
+            "offers": [
+              {
+                "offerId": "fe042e8b-09e6-4289-9b3e-2a2c302bc249",
+                "status": "AUTO_DECLINED",
+                "offerCreatorRole": "SELLER",
+                "offerPrice": {
+                  "original": {
+                    "value": "1.00",
+                    "currency": "AFN"
+                  },
+                  "converted": {
+                    "value": "1.00",
+                    "currency": "HUF"
+                  }
+                },
+                "quantity": -91,
+                "createdAt": "2024-01-01T00:00:00.000Z",
+                "updatedAt": "2024-01-01T00:00:00.000Z",
+                "expiresAt": "2024-01-01T00:00:00.000Z",
+                "message": "Hello World"
+              },
+              {
+                "offerId": "73e3da88-d95e-45d3-b47c-7e9c861813f7",
+                "status": "RETRACTED",
+                "offerCreatorRole": "BUYER",
+                "offerPrice": {
+                  "original": {
+                    "value": "1.00",
+                    "currency": "STN"
+                  },
+                  "converted": {
+                    "value": "1.00",
+                    "currency": "MXN"
+                  }
+                },
+                "quantity": -9,
+                "createdAt": "2024-01-01T00:00:00.000Z",
+                "updatedAt": "2024-01-01T00:00:00.000Z",
+                "expiresAt": "2024-01-01T00:00:00.000Z",
+                "message": "Hello World"
+              }
+            ],
+            "latestOffer": {
+              "offerId": "5987752f-cb18-4be0-98a0-83e3fe40c914",
+              "status": "AUTO_DECLINED",
+              "offerCreatorRole": "SELLER",
+              "quantity": 80,
+              "offerPrice": {
+                "original": {
+                  "value": "1.00",
+                  "currency": "MRU"
+                },
+                "converted": {
+                  "value": "1.00",
+                  "currency": "NIO"
+                }
+              },
+              "createdAt": "2024-01-01T00:00:00.000Z",
+              "updatedAt": "2024-01-01T00:00:00.000Z",
+              "expiresAt": "2024-01-01T00:00:00.000Z"
+            },
+            "offerCapabilities": [
+              {
+                "negotiable": false
+              },
+              {
+                "negotiable": false
+              }
+            ],
+            "target": {
+              "itemId": "a52203d9-aac0-44d0-8682-db8c27ddeb4f"
+            }
+          }
+        ]
+      },
+      {
+        "item": {
+          "itemId": "7a448fbf-1035-4e4a-b9cc-3a33bc6314fa"
+        },
+        "negotiations": [
+          {
+            "negotiationId": "304f2b74-0ef2-4522-8ca7-35de946d5e8c",
+            "offers": [
+              {
+                "offerId": "8798eda1-ad82-4c62-b817-954f04c8fdd6",
+                "status": "ADMIN_ENDED",
+                "offerCreatorRole": "SELLER",
+                "offerPrice": {
+                  "original": {
+                    "value": "1.00",
+                    "currency": "HKD"
+                  },
+                  "converted": {
+                    "value": "1.00",
+                    "currency": "AWG"
+                  }
+                },
+                "quantity": 66,
+                "createdAt": "2024-01-01T00:00:00.000Z",
+                "updatedAt": "2024-01-01T00:00:00.000Z",
+                "expiresAt": "2024-01-01T00:00:00.000Z",
+                "message": "Hello World"
+              },
+              {
+                "offerId": "bf9d73b5-71fb-463e-a571-62d9cd163e46",
+                "status": "CANCELED",
+                "offerCreatorRole": "BUYER",
+                "offerPrice": {
+                  "original": {
+                    "value": "1.00",
+                    "currency": "ERN"
+                  },
+                  "converted": {
+                    "value": "1.00",
+                    "currency": "INR"
+                  }
+                },
+                "quantity": 59,
+                "createdAt": "2024-01-01T00:00:00.000Z",
+                "updatedAt": "2024-01-01T00:00:00.000Z",
+                "expiresAt": "2024-01-01T00:00:00.000Z",
+                "message": "Hello World"
+              }
+            ],
+            "latestOffer": {
+              "offerId": "dee0fa51-6c4d-4e0a-9d33-2ba8af80f68e",
+              "status": "EXPIRED",
+              "offerCreatorRole": "BUYER",
+              "quantity": 96,
+              "offerPrice": {
+                "original": {
+                  "value": "1.00",
+                  "currency": "RWF"
+                },
+                "converted": {
+                  "value": "1.00",
+                  "currency": "SOS"
+                }
+              },
+              "createdAt": "2024-01-01T00:00:00.000Z",
+              "updatedAt": "2024-01-01T00:00:00.000Z",
+              "expiresAt": "2024-01-01T00:00:00.000Z"
+            },
+            "offerCapabilities": [
+              {
+                "negotiable": true
+              },
+              {
+                "negotiable": true
+              }
+            ],
+            "target": {
+              "itemId": "a56ca0a9-1173-4b8d-bed4-fc9232bd9a6c"
+            }
+          },
+          {
+            "negotiationId": "623e6a4f-5f25-470c-8f8c-786e80e8cedb",
+            "offers": [
+              {
+                "offerId": "e32eed9d-39e9-4509-8be1-21558cb997f7",
+                "status": "CANCELED",
+                "offerCreatorRole": "BUYER",
+                "offerPrice": {
+                  "original": {
+                    "value": "1.00",
+                    "currency": "JPY"
+                  },
+                  "converted": {
+                    "value": "1.00",
+                    "currency": "AWG"
+                  }
+                },
+                "quantity": -29,
+                "createdAt": "2024-01-01T00:00:00.000Z",
+                "updatedAt": "2024-01-01T00:00:00.000Z",
+                "expiresAt": "2024-01-01T00:00:00.000Z",
+                "message": "Hello World"
+              },
+              {
+                "offerId": "3cc2d6f8-e3b6-4a2a-8477-3d5afc773bd4",
+                "status": "ACCEPTED",
+                "offerCreatorRole": "BUYER",
+                "offerPrice": {
+                  "original": {
+                    "value": "1.00",
+                    "currency": "MUR"
+                  },
+                  "converted": {
+                    "value": "1.00",
+                    "currency": "TJS"
+                  }
+                },
+                "quantity": 6,
+                "createdAt": "2024-01-01T00:00:00.000Z",
+                "updatedAt": "2024-01-01T00:00:00.000Z",
+                "expiresAt": "2024-01-01T00:00:00.000Z",
+                "message": "Hello World"
+              }
+            ],
+            "latestOffer": {
+              "offerId": "0f706e0d-12a4-4122-94e9-569c60f02346",
+              "status": "SELLER_ACCEPTED",
+              "offerCreatorRole": "BUYER",
+              "quantity": 43,
+              "offerPrice": {
+                "original": {
+                  "value": "1.00",
+                  "currency": "TOP"
+                },
+                "converted": {
+                  "value": "1.00",
+                  "currency": "PYG"
+                }
+              },
+              "createdAt": "2024-01-01T00:00:00.000Z",
+              "updatedAt": "2024-01-01T00:00:00.000Z",
+              "expiresAt": "2024-01-01T00:00:00.000Z"
+            },
+            "offerCapabilities": [
+              {
+                "negotiable": true
+              },
+              {
+                "negotiable": true
+              }
+            ],
+            "target": {
+              "itemId": "b8742775-f55d-4277-acea-3272af737981"
+            }
+          }
+        ]
+      }
+    ],
+    "pagination": {
+      "nextCursor": "Hello World",
+      "previousCursor": "Hello World"
+    }
+  }
+}

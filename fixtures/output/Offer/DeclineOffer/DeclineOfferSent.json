@@ -2,8 +2,8 @@
   "declineOffer": {
     "__typename": "DeclineOfferSent",
     "offer": {
-      "offerId": "29e1798a-8802-40ce-993c-ff693c1ad46f",
-      "status": "ACCEPTED"
+      "offerId": "6c25c343-d873-4be5-98a1-bfcb0befce59",
+      "status": "ADMIN_ENDED"
     }
   }
 }
