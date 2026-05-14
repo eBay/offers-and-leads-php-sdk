@@ -2,26 +2,26 @@
   "declineOffer": {
     "__typename": "DeclineOfferSent",
     "offer": {
-      "offerId": "2647cb7d-9048-4ca9-a1d0-e296f58091c5",
+      "offerId": "42b72963-4836-42d1-a1ca-9d16bbff67cc",
       "createdAt": "2024-01-01T00:00:00.000Z",
       "expiresAt": "2024-01-01T00:00:00.000Z",
       "message": "Hello World",
       "offerPrice": {
         "converted": {
-          "currency": "SZL",
+          "currency": "MZN",
           "value": "1.00"
         },
         "original": {
-          "currency": "PKR",
+          "currency": "BND",
           "value": "1.00"
         }
       },
-      "quantity": -20,
-      "status": "CANCELED",
+      "quantity": 95,
+      "status": "EXPIRED",
       "updatedAt": "2024-01-01T00:00:00.000Z",
-      "offerCreatorRole": "BUYER",
+      "offerCreatorRole": "SELLER",
       "offerCreatorUser": {
-        "userId": "3d189dec-4e8a-4641-a297-b5637c5ae448"
+        "userId": "b4556f51-18f3-4dd9-98f8-3d309c3995b5"
       }
     }
   }

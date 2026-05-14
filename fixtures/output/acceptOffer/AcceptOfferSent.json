@@ -2,14 +2,14 @@
   "acceptOffer": {
     "__typename": "AcceptOfferSent",
     "offer": {
-      "offerId": "3e9644ff-77b7-4031-8944-1b845fb01b3e",
-      "status": "AUTO_ACCEPTED",
-      "offerCreatorRole": "BUYER",
+      "offerId": "2a172ace-508c-42d5-bb76-d2e4854db580",
+      "status": "ADMIN_ENDED",
+      "offerCreatorRole": "SELLER",
       "offerCreatorUser": {
-        "userId": "d1025b4c-55e9-4c2e-9901-b1e9ffc0dbbc",
+        "userId": "53716e47-019d-4fe6-811a-72d321190b40",
         "username": "Hello World",
         "shippingZone": {
-          "countryCode": "AR",
+          "countryCode": "SC",
           "postalCode": "Hello World",
           "stateOrProvince": "Hello World"
         },
@@ -20,7 +20,7 @@
           "lastName": "Hello World",
           "middleName": "Hello World",
           "primaryPhone": {
-            "countryCode": "TF",
+            "countryCode": "AZ",
             "dialCode": "Hello World",
             "phoneNumberType": "Hello World",
             "phoneNumber": "Hello World"
@@ -29,32 +29,32 @@
             "addressLine1": "Hello World",
             "addressLine2": "Hello World",
             "city": "Hello World",
-            "countryCode": "MV",
+            "countryCode": "DO",
             "postalCode": "Hello World",
             "stateOrProvince": "Hello World"
           }
         },
         "userCreatedAt": "2024-01-01T00:00:00.000Z"
       },
-      "quantity": -78,
+      "quantity": -13,
       "updatedAt": "2024-01-01T00:00:00.000Z",
       "createdAt": "2024-01-01T00:00:00.000Z",
       "expiresAt": "2024-01-01T00:00:00.000Z",
       "message": "Hello World",
       "offerPrice": {
         "converted": {
-          "currency": "TZS",
+          "currency": "MMK",
           "value": "1.00"
         },
         "original": {
-          "currency": "CRC",
+          "currency": "SAR",
           "value": "1.00"
         }
       }
     },
     "purchaseReference": {
       "__typename": "ItemCommitment",
-      "itemCommitmentId": "362712c3-94da-40b1-a993-23de83e2caf1"
+      "itemCommitmentId": "7f5834a2-e519-41d1-97ac-46aa258d32f9"
     }
   }
 }

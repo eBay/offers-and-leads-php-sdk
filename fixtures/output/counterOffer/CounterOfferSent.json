@@ -2,20 +2,20 @@
   "counterOffer": {
     "__typename": "CounterOfferSent",
     "offer": {
-      "offerId": "e85e503f-4795-45ab-9c4d-9814b8903a2c",
-      "offerCreatorRole": "SELLER",
-      "status": "RETRACTED",
+      "offerId": "c0d47ea5-e729-48d2-8088-a30e932d6618",
+      "offerCreatorRole": "BUYER",
+      "status": "AUTO_DECLINED",
       "offerPrice": {
         "original": {
           "value": "1.00",
-          "currency": "SLE"
+          "currency": "XPF"
         },
         "converted": {
           "value": "1.00",
-          "currency": "CAD"
+          "currency": "SAR"
         }
       },
-      "quantity": 25,
+      "quantity": 34,
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z",
       "expiresAt": "2024-01-01T00:00:00.000Z",
