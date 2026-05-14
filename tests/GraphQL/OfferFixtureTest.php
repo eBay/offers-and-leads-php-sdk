@@ -14,17 +14,17 @@ use PHPUnit\Framework\TestCase;
 
 class OfferFixtureTest extends TestCase
 {
-    private static string $fixturesDir = __DIR__ . '/../../fixtures/output/Offer';
+    private static string $fixturesDir = __DIR__ . '/../../fixtures/output';
 
     public static function fixtures(): iterable
     {
         $operationMap = [
-            'AcceptOffer'               => ['acceptOffer',               AcceptOfferOutput::class],
-            'DeclineOffer'              => ['declineOffer',              DeclineOfferOutput::class],
-            'SellerNegotiationHistory'  => ['sellerNegotiationHistory',  SellerNegotiationHistoryOutput::class],
-            'BuyerNegotiationHistory'   => ['buyerNegotiationHistory',   BuyerNegotiationHistoryOutput::class],
-            'CounterOffer'              => ['counterOffer',              CounterOfferOutput::class],
-            'MakeOffer'                 => ['makeOffer',                 MakeOfferOutput::class],
+            'acceptOffer'               => ['acceptOffer',               AcceptOfferOutput::class],
+            'declineOffer'              => ['declineOffer',              DeclineOfferOutput::class],
+            'sellerNegotiationHistory'  => ['sellerNegotiationHistory',  SellerNegotiationHistoryOutput::class],
+            'buyerNegotiationHistory'   => ['buyerNegotiationHistory',   BuyerNegotiationHistoryOutput::class],
+            'counterOffer'              => ['counterOffer',              CounterOfferOutput::class],
+            'makeOffer'                 => ['makeOffer',                 MakeOfferOutput::class],
         ];
 
         $dir = self::$fixturesDir;

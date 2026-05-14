@@ -1,0 +1,60 @@
+{
+  "acceptOffer": {
+    "__typename": "AcceptOfferSent",
+    "offer": {
+      "offerId": "3e9644ff-77b7-4031-8944-1b845fb01b3e",
+      "status": "AUTO_ACCEPTED",
+      "offerCreatorRole": "BUYER",
+      "offerCreatorUser": {
+        "userId": "d1025b4c-55e9-4c2e-9901-b1e9ffc0dbbc",
+        "username": "Hello World",
+        "shippingZone": {
+          "countryCode": "AR",
+          "postalCode": "Hello World",
+          "stateOrProvince": "Hello World"
+        },
+        "newUser": true,
+        "individualIdentityProfile": {
+          "email": "Hello World",
+          "firstName": "Hello World",
+          "lastName": "Hello World",
+          "middleName": "Hello World",
+          "primaryPhone": {
+            "countryCode": "TF",
+            "dialCode": "Hello World",
+            "phoneNumberType": "Hello World",
+            "phoneNumber": "Hello World"
+          },
+          "profileAddress": {
+            "addressLine1": "Hello World",
+            "addressLine2": "Hello World",
+            "city": "Hello World",
+            "countryCode": "MV",
+            "postalCode": "Hello World",
+            "stateOrProvince": "Hello World"
+          }
+        },
+        "userCreatedAt": "2024-01-01T00:00:00.000Z"
+      },
+      "quantity": -78,
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "expiresAt": "2024-01-01T00:00:00.000Z",
+      "message": "Hello World",
+      "offerPrice": {
+        "converted": {
+          "currency": "TZS",
+          "value": "1.00"
+        },
+        "original": {
+          "currency": "CRC",
+          "value": "1.00"
+        }
+      }
+    },
+    "purchaseReference": {
+      "__typename": "ItemCommitment",
+      "itemCommitmentId": "362712c3-94da-40b1-a993-23de83e2caf1"
+    }
+  }
+}

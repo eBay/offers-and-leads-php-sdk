@@ -1,9 +1,0 @@
-{
-  "declineOffer": {
-    "__typename": "DeclineOfferSent",
-    "offer": {
-      "offerId": "6c25c343-d873-4be5-98a1-bfcb0befce59",
-      "status": "ADMIN_ENDED"
-    }
-  }
-}

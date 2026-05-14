@@ -1,0 +1,10 @@
+{
+  "input": {
+    "itemId": "mock-id",
+    "offerId": "mock-id",
+    "proposedPrice": {
+      "currency": "AED",
+      "value": "1.00"
+    }
+  }
+}

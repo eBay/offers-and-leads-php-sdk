@@ -2,20 +2,20 @@
   "counterOffer": {
     "__typename": "CounterOfferSent",
     "offer": {
-      "offerId": "963143c4-43e7-408c-961e-753303f2a840",
-      "offerCreatorRole": "BUYER",
-      "status": "ADMIN_ENDED",
+      "offerId": "e85e503f-4795-45ab-9c4d-9814b8903a2c",
+      "offerCreatorRole": "SELLER",
+      "status": "RETRACTED",
       "offerPrice": {
         "original": {
           "value": "1.00",
-          "currency": "AUD"
+          "currency": "SLE"
         },
         "converted": {
           "value": "1.00",
-          "currency": "GMD"
+          "currency": "CAD"
         }
       },
-      "quantity": 0,
+      "quantity": 25,
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z",
       "expiresAt": "2024-01-01T00:00:00.000Z",

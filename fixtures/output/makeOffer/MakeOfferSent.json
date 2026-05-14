@@ -2,24 +2,27 @@
   "makeOffer": {
     "__typename": "MakeOfferSent",
     "offer": {
-      "offerId": "c00263c8-5eb1-490b-ae70-87d1d1c064db",
+      "offerId": "76780a77-08a5-4d4e-82a8-f3a84450cc89",
       "offerCreatorRole": "BUYER",
-      "status": "CANCELED",
+      "status": "AUTO_ACCEPTED",
       "offerPrice": {
         "original": {
           "value": "1.00",
-          "currency": "IDR"
+          "currency": "TMT"
         },
         "converted": {
           "value": "1.00",
-          "currency": "PKR"
+          "currency": "SAR"
         }
       },
-      "quantity": -7,
+      "quantity": 100,
       "createdAt": "2024-01-01T00:00:00.000Z",
       "updatedAt": "2024-01-01T00:00:00.000Z",
       "expiresAt": "2024-01-01T00:00:00.000Z",
-      "message": "Hello World"
+      "message": "Hello World",
+      "offerCreatorUser": {
+        "userId": "20c6d30f-3087-4bb8-98ef-d40f8e1388eb"
+      }
     }
   }
 }

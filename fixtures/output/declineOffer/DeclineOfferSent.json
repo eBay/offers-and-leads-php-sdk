@@ -1,0 +1,28 @@
+{
+  "declineOffer": {
+    "__typename": "DeclineOfferSent",
+    "offer": {
+      "offerId": "2647cb7d-9048-4ca9-a1d0-e296f58091c5",
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "expiresAt": "2024-01-01T00:00:00.000Z",
+      "message": "Hello World",
+      "offerPrice": {
+        "converted": {
+          "currency": "SZL",
+          "value": "1.00"
+        },
+        "original": {
+          "currency": "PKR",
+          "value": "1.00"
+        }
+      },
+      "quantity": -20,
+      "status": "CANCELED",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "offerCreatorRole": "BUYER",
+      "offerCreatorUser": {
+        "userId": "3d189dec-4e8a-4641-a297-b5637c5ae448"
+      }
+    }
+  }
+}
