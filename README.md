@@ -203,3 +203,7 @@ specs/
   sell_feed_v1_oas3.yaml                    <- OpenAPI spec (Classified Leads)
   eBay_Graph.graphqls                       <- eBay Graph schema
 ```
+
+## License
+
+This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
