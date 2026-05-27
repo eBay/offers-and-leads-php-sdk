@@ -136,7 +136,8 @@ $result = $sdk->offers->buyerNegotiationHistory(new BuyerNegotiationHistoryInput
 ### Raw GraphQL (Escape Hatch)
 
 ```php
-$data = $sdk->offers->executeRaw('query { sellerNegotiationHistory { ... } }');
+// WARNING: never interpolate user input into the query string — use $variables instead.
+$data = $sdk->offers->executeRawUnsafe('query { sellerNegotiationHistory { ... } }');
 ```
 
 ## Per-Call Token Override
