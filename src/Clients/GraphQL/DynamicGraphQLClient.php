@@ -51,6 +51,12 @@ final class DynamicGraphQLClient
                 'No access token. Pass $accessToken or set OffersAndLeadsConfiguration::$accessToken.'
             );
 
+        if (empty($token)) {
+            throw new \RuntimeException(
+                'No access token. Pass $accessToken per-call or set OffersAndLeadsConfiguration::$accessToken.'
+            );
+        }
+
         $headers = $this->buildHeaders($token, $requestOptions);
 
         try {

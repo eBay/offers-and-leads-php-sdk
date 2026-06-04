@@ -35,7 +35,7 @@ final class KiotaAuthProvider implements AccessTokenProvider
     public function getAuthorizationTokenAsync(string $url, array $additionalAuthenticationContext = []): Promise
     {
         $token = TokenContext::get() ?? $this->config->accessToken;
-        if ($token === null) {
+        if (empty($token)) {
             throw new \RuntimeException(
                 'No access token. Pass $accessToken per-call or set OffersAndLeadsConfiguration::$accessToken.'
             );
