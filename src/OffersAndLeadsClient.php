@@ -68,7 +68,7 @@ final class OffersAndLeadsClient
                     error_log(sprintf(
                         '[OffersAndLeads] --> %s %s',
                         $request->getMethod(),
-                        (string) $request->getUri(),
+                        str_replace(["\r", "\n"], ' ', (string) $request->getUri()),
                     ));
                 },
                 after: static function (RequestInterface $request, array $options, mixed $response): void {
@@ -76,7 +76,7 @@ final class OffersAndLeadsClient
                     if (is_object($response) && method_exists($response, 'then')) {
                         $response->then(static function (mixed $res) use ($request): void {
                             $status = method_exists($res, 'getStatusCode') ? $res->getStatusCode() : '?';
-                            error_log(sprintf('[OffersAndLeads] <-- %s %s', $status, (string) $request->getUri()));
+                            error_log(sprintf('[OffersAndLeads] <-- %s %s', $status, str_replace(["\r", "\n"], ' ', (string) $request->getUri())));
                         });
                     }
                 },
