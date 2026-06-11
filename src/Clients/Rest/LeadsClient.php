@@ -115,8 +115,8 @@ final class LeadsClient
 
     private function call(?string $accessToken, callable $op): mixed
     {
-        $token = $accessToken ?? $this->config->accessToken
-            ?? throw new \RuntimeException('No access token. Pass $accessToken per-call or set OffersAndLeadsConfiguration::$accessToken.');
+        $token = ($accessToken ?? $this->config->accessToken)
+            ?: throw new \RuntimeException('No access token. Pass $accessToken per-call or set OffersAndLeadsConfiguration::$accessToken.');
         return $op($this->buildApiClient($token));
     }
 
