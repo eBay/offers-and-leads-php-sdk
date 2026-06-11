@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace EBay\OffersAndLeads\Clients\Rest;
 
+use EBay\OffersAndLeads\Configuration\KiotaAuthProvider;
 use EBay\OffersAndLeads\Configuration\OffersAndLeadsConfiguration;
 use EBay\OffersAndLeads\Configuration\RequestOptions;
-use EBay\OffersAndLeads\Configuration\TokenContext;
 use EBay\OffersAndLeads\Generated\SellLeads\Classified_lead\Classified_leadRequestBuilderGetQueryParameters;
 use EBay\OffersAndLeads\Generated\SellLeads\Classified_lead\Classified_leadRequestBuilderGetRequestConfiguration;
 use EBay\OffersAndLeads\Generated\SellLeads\Classified_lead\Item\WithItemItemRequestBuilderGetQueryParameters;
@@ -28,11 +28,14 @@ use EBay\OffersAndLeads\Generated\SellLeads\Classified_lead\Item\WithItemItemReq
 use EBay\OffersAndLeads\Generated\SellLeads\Models\ClassifiedLeadsListResponse;
 use EBay\OffersAndLeads\Generated\SellLeads\Models\ClassifiedLead;
 use EBay\OffersAndLeads\Generated\SellLeads\SellLeadsApiClient;
+use GuzzleHttp\Client as GuzzleClient;
+use Microsoft\Kiota\Abstractions\Authentication\BaseBearerTokenAuthenticationProvider;
+use Microsoft\Kiota\Http\GuzzleRequestAdapter;
 
 final class LeadsClient
 {
     public function __construct(
-        private readonly SellLeadsApiClient $kiota,
+        private readonly GuzzleClient $guzzle,
         private readonly OffersAndLeadsConfiguration $config,
     ) {}
 
@@ -55,21 +58,21 @@ final class LeadsClient
         ?string $accessToken = null,
         ?RequestOptions $requestOptions = null,
     ): ?ClassifiedLeadsListResponse {
-        return TokenContext::runWith($accessToken, function () use ($startTime, $endTime, $status, $includeMessages, $requestOptions): ?ClassifiedLeadsListResponse {
-            $headers = $this->buildHeaders($requestOptions);
+        $headers = $this->mergedHeaders($requestOptions);
 
-            $requestConfig = new Classified_leadRequestBuilderGetRequestConfiguration(
-                headers: $headers ?: null,
-                queryParameters: new Classified_leadRequestBuilderGetQueryParameters(
-                    endTime: $endTime,
-                    includeMessages: $includeMessages,
-                    startTime: $startTime,
-                    status: $status,
-                )
-            );
+        $requestConfig = new Classified_leadRequestBuilderGetRequestConfiguration(
+            headers: $headers ?: null,
+            queryParameters: new Classified_leadRequestBuilderGetQueryParameters(
+                endTime: $endTime,
+                includeMessages: $includeMessages,
+                startTime: $startTime,
+                status: $status,
+            )
+        );
 
-            return $this->kiota->classified_lead()->get($requestConfig)->wait();
-        });
+        return $this->call($accessToken, fn($api) =>
+            $api->classified_lead()->get($requestConfig)->wait()
+        );
     }
 
     /**
@@ -93,40 +96,49 @@ final class LeadsClient
         ?string $accessToken = null,
         ?RequestOptions $requestOptions = null,
     ): ?ClassifiedLead {
-        return TokenContext::runWith($accessToken, function () use ($itemId, $startTime, $endTime, $status, $includeMessages, $requestOptions): ?ClassifiedLead {
-            $headers = $this->buildHeaders($requestOptions);
+        $headers = $this->mergedHeaders($requestOptions);
 
-            $requestConfig = new WithItemItemRequestBuilderGetRequestConfiguration(
-                headers: $headers ?: null,
-                queryParameters: new WithItemItemRequestBuilderGetQueryParameters(
-                    endTime: $endTime,
-                    includeMessages: $includeMessages,
-                    startTime: $startTime,
-                    status: $status,
-                )
-            );
+        $requestConfig = new WithItemItemRequestBuilderGetRequestConfiguration(
+            headers: $headers ?: null,
+            queryParameters: new WithItemItemRequestBuilderGetQueryParameters(
+                endTime: $endTime,
+                includeMessages: $includeMessages,
+                startTime: $startTime,
+                status: $status,
+            )
+        );
 
-            return $this->kiota->classified_lead()->byItemId($itemId)->get($requestConfig)->wait();
-        });
+        return $this->call($accessToken, fn($api) =>
+            $api->classified_lead()->byItemId($itemId)->get($requestConfig)->wait()
+        );
+    }
+
+    private function call(?string $accessToken, callable $op): mixed
+    {
+        $token = $accessToken ?? $this->config->accessToken
+            ?? throw new \RuntimeException('No access token. Pass $accessToken per-call or set OffersAndLeadsConfiguration::$accessToken.');
+        return $op($this->buildApiClient($token));
     }
 
     /**
-     * Build the merged headers array: defaultRequestOptions first, per-call overrides on top.
-     * Semantics: per-call values take precedence (last-write wins on duplicate keys).
-     *
-     * @param  RequestOptions|null $requestOptions
-     * @return array<string,string>
+     * Build a fresh per-call Kiota API client backed by the shared Guzzle instance.
      */
-    private function buildHeaders(?RequestOptions $requestOptions): array
+    private function buildApiClient(string $token): SellLeadsApiClient
     {
-        $merged = $this->config->defaultRequestOptions->headers;
+        $auth = new BaseBearerTokenAuthenticationProvider(
+            new KiotaAuthProvider($token, $this->config->getAllowedHosts())
+        );
+        $adapter = new GuzzleRequestAdapter($auth, guzzleClient: $this->guzzle);
+        $adapter->setBaseUrl($this->config->leadsBaseUrl);
+        return new SellLeadsApiClient($adapter);
+    }
 
-        if ($requestOptions !== null) {
-            foreach ($requestOptions->headers as $key => $value) {
-                $merged[$key] = $value;
-            }
-        }
-
-        return $merged;
+    /** @return array<string,string> */
+    private function mergedHeaders(?RequestOptions $requestOptions): array
+    {
+        return array_merge(
+            $this->config->defaultRequestOptions->headers,
+            $requestOptions?->headers ?? []
+        );
     }
 }

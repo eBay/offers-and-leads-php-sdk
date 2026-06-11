@@ -27,20 +27,16 @@ final class KiotaAuthProvider implements AccessTokenProvider
 {
     private readonly AllowedHostsValidator $allowedHostsValidator;
 
-    public function __construct(private readonly OffersAndLeadsConfiguration $config)
-    {
-        $this->allowedHostsValidator = new AllowedHostsValidator($config->getAllowedHosts());
+    public function __construct(
+        private readonly string $token,
+        array $allowedHosts,
+    ) {
+        $this->allowedHostsValidator = new AllowedHostsValidator($allowedHosts);
     }
 
     public function getAuthorizationTokenAsync(string $url, array $additionalAuthenticationContext = []): Promise
     {
-        $token = TokenContext::get() ?? $this->config->accessToken;
-        if (empty($token)) {
-            throw new \RuntimeException(
-                'No access token. Pass $accessToken per-call or set OffersAndLeadsConfiguration::$accessToken.'
-            );
-        }
-        return new FulfilledPromise($token);
+        return new FulfilledPromise($this->token);
     }
 
     public function getAllowedHostsValidator(): AllowedHostsValidator

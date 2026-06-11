@@ -20,7 +20,6 @@ namespace EBay\OffersAndLeads\Clients\GraphQL;
 
 use EBay\OffersAndLeads\Configuration\OffersAndLeadsConfiguration;
 use EBay\OffersAndLeads\Configuration\RequestOptions;
-use EBay\OffersAndLeads\Configuration\TokenContext;
 use EBay\OffersAndLeads\Exceptions\GraphQLException;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\BadResponseException;
@@ -46,16 +45,10 @@ final class DynamicGraphQLClient
         ?string $accessToken = null,
         ?RequestOptions $requestOptions = null,
     ): array {
-        $token = $accessToken ?? TokenContext::get() ?? $this->config->accessToken
+        $token = $accessToken ?? $this->config->accessToken
             ?? throw new \RuntimeException(
-                'No access token. Pass $accessToken or set OffersAndLeadsConfiguration::$accessToken.'
-            );
-
-        if (empty($token)) {
-            throw new \RuntimeException(
                 'No access token. Pass $accessToken per-call or set OffersAndLeadsConfiguration::$accessToken.'
             );
-        }
 
         $headers = $this->buildHeaders($token, $requestOptions);
 

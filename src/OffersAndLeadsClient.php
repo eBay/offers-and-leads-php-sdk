@@ -21,14 +21,10 @@ namespace EBay\OffersAndLeads;
 use EBay\OffersAndLeads\Clients\GraphQL\DynamicGraphQLClient;
 use EBay\OffersAndLeads\Clients\GraphQL\OffersGraphQLClient;
 use EBay\OffersAndLeads\Clients\Rest\LeadsClient;
-use EBay\OffersAndLeads\Configuration\KiotaAuthProvider;
 use EBay\OffersAndLeads\Configuration\OffersAndLeadsConfiguration;
-use EBay\OffersAndLeads\Generated\SellLeads\SellLeadsApiClient;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
-use Microsoft\Kiota\Abstractions\Authentication\BaseBearerTokenAuthenticationProvider;
-use Microsoft\Kiota\Http\GuzzleRequestAdapter;
 use Psr\Http\Message\RequestInterface;
 
 final class OffersAndLeadsClient
@@ -45,12 +41,8 @@ final class OffersAndLeadsClient
     ) {
         $guzzle ??= $this->buildGuzzle($config);
 
-        $auth = new BaseBearerTokenAuthenticationProvider(new KiotaAuthProvider($config));
-
-        // REST — Classified Leads
-        $leadsAdapter = new GuzzleRequestAdapter($auth, guzzleClient: $guzzle);
-        $leadsAdapter->setBaseUrl($config->leadsBaseUrl);
-        $this->leads = new LeadsClient(new SellLeadsApiClient($leadsAdapter), $config);
+        // REST — Classified Leads (adapter built per-call inside LeadsClient)
+        $this->leads = new LeadsClient($guzzle, $config);
 
         // GraphQL — Offers & Negotiation History
         $this->offers = new OffersGraphQLClient(
