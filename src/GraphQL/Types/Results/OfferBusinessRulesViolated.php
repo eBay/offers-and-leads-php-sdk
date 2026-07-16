@@ -34,6 +34,7 @@ readonly class OfferBusinessRulesViolated
         return 'OfferBusinessRulesViolated';
     }
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(

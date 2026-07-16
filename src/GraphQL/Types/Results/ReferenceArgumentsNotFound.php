@@ -34,6 +34,7 @@ readonly class ReferenceArgumentsNotFound
         return 'ReferenceArgumentsNotFound';
     }
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(

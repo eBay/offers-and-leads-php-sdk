@@ -67,7 +67,7 @@ final class OffersAndLeadsClient
                     // $response is a GuzzleHttp promise; log the settled value when available
                     if (is_object($response) && method_exists($response, 'then')) {
                         $response->then(static function (mixed $res) use ($request): void {
-                            $status = method_exists($res, 'getStatusCode') ? $res->getStatusCode() : '?';
+                            $status = is_object($res) && method_exists($res, 'getStatusCode') ? $res->getStatusCode() : '?';
                             error_log(sprintf('[OffersAndLeads] <-- %s %s', $status, str_replace(["\r", "\n"], ' ', (string) $request->getUri())));
                         });
                     }

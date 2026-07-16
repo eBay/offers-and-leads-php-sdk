@@ -34,6 +34,7 @@ readonly class NegotiationOfferDetails
         public ?array $offerCreatorUser = null,
     ) {}
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(

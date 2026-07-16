@@ -29,6 +29,7 @@ readonly class DeclineOfferSent extends DeclineOfferOutput
         return 'DeclineOfferSent';
     }
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(

@@ -24,6 +24,7 @@ readonly class SellerNegotiationHistoryInput
         public ?NegotiationHistoryFiltersInput $filters = null,
     ) {}
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
@@ -31,6 +32,7 @@ readonly class SellerNegotiationHistoryInput
         );
     }
 
+    /** @return array<string, mixed> */
     public function toArray(): array
     {
         return array_filter([

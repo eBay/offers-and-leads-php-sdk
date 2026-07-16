@@ -25,6 +25,7 @@ abstract readonly class AcceptOfferOutput
 {
     abstract public function getTypename(): string;
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): AcceptOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
     {
         return match ($data['__typename'] ?? null) {

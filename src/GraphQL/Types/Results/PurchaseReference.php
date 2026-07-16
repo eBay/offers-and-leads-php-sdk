@@ -28,6 +28,7 @@ readonly class PurchaseReference
         public ?string $itemCommitmentId = null,
     ) {}
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(

@@ -25,6 +25,7 @@ abstract readonly class CounterOfferOutput
 {
     abstract public function getTypename(): string;
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): CounterOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
     {
         return match ($data['__typename'] ?? null) {

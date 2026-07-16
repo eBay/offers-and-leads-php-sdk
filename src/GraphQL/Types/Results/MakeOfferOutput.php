@@ -25,6 +25,7 @@ abstract readonly class MakeOfferOutput
 {
     abstract public function getTypename(): string;
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): MakeOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
     {
         return match ($data['__typename'] ?? null) {

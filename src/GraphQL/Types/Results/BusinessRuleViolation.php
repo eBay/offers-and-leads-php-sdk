@@ -24,6 +24,7 @@ readonly class BusinessRuleViolation
         public string $ruleDescription,
     ) {}
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(

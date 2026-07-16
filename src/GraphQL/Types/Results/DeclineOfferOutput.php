@@ -25,6 +25,7 @@ abstract readonly class DeclineOfferOutput
 {
     abstract public function getTypename(): string;
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): DeclineOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
     {
         return match ($data['__typename'] ?? null) {

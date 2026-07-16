@@ -30,6 +30,7 @@ readonly class AcceptOfferSent extends AcceptOfferOutput
         return 'AcceptOfferSent';
     }
 
+    /** @param array<mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
