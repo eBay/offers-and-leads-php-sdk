@@ -20,22 +20,14 @@ namespace EBay\OffersAndLeads\Configuration;
 
 final class OffersAndLeadsConfiguration
 {
-    /** Base URL for the Classified Leads REST API. */
-    public string $leadsBaseUrl = 'https://apiz.ebay.com/sell/leads/v1';
+    public readonly RequestOptions $defaultRequestOptions;
 
-    /** Base URL for the eBay GraphQL API. */
-    public string $graphQLBaseUrl = 'https://api.ebay.com/graphql';
-
-    /** Static fallback access token; per-call token takes precedence. */
-    public ?string $accessToken = null;
-
-    public bool $diagnosticLogging = false;
-
-    /** Default headers sent with every request; per-call RequestOptions can override/extend. */
-    public RequestOptions $defaultRequestOptions;
-
-    public function __construct()
-    {
+    public function __construct(
+        public readonly string  $leadsBaseUrl      = 'https://apiz.ebay.com/sell/leads/v1',
+        public readonly string  $graphQLBaseUrl    = 'https://api.ebay.com/graphql',
+        public readonly ?string $accessToken       = null,
+        public readonly bool    $diagnosticLogging = false,
+    ) {
         $this->defaultRequestOptions = new RequestOptions();
     }
 
