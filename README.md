@@ -170,7 +170,7 @@ $config->diagnosticLogging = true;
 
 ## Specs
 
-- OpenAPI: `specs/sell_feed_v1_oas3.yaml` (Classified Leads API)
+- OpenAPI: `specs/openapi/classified-leads.yaml` (Classified Leads API)
 - GraphQL: `specs/eBay_Graph.graphqls`
 
 To regenerate Kiota clients:

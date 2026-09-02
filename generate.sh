@@ -21,7 +21,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "Regenerating REST clients via Kiota..."
 
 kiota generate -l php \
-  -d specs/sell_feed_v1_oas3.yaml \
+  -d specs/openapi/classified-leads.yaml \
   -c SellLeadsApiClient \
   -n 'EBay\OffersAndLeads\Generated\SellLeads' \
   -o src/Generated/SellLeads \
