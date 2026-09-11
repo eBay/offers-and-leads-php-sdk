@@ -62,9 +62,9 @@ with open(file_path, 'w', encoding='utf-8') as f:
 
 print('Added: ' + file_path, flush=True)
 sys.exit(2)
-" "$file" "$PHP_HEADER"
-    status=$?
-    if [ $status -eq 2 ]; then count=$((count + 1)); elif [ $status -ne 0 ]; then exit $status; fi
+" "$file" "$PHP_HEADER" || status=$?
+    if [ "${status:-0}" -eq 2 ]; then count=$((count + 1)); elif [ "${status:-0}" -ne 0 ]; then exit "${status:-0}"; fi
+    status=0
 done < <(find "$TARGET" -name "*.php" ! -path "*/vendor/*" -print0)
 
 echo "Done. Added license headers to $count file(s)."
