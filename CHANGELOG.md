@@ -2,12 +2,11 @@
 
 ## 0.2.0 (09/14/2026)
 
-Consolidated experimental release.
+### Breaking changes
 
-- REST clients: `ClassifiedLeadsClient`.
-- GraphQL support for 6 checked-in operations.
-- Includes the current API definitions, regenerated clients, and wrapper updates.
-- Preserves existing wrapper parameter order where signatures allow it.
-- Aligns wrapper query parameter types with the generated Kiota clients.
+#### Renamed clients and members
 
-This entry establishes the consolidated experimental baseline.
+| Surface | Previous | Current |
+| --- | --- | --- |
+| REST client | `LeadsClient` | `ClassifiedLeadsClient` |
+| `OffersAndLeadsClient` member | `$leads` | `$classifiedLeads` |
