@@ -32,7 +32,7 @@ class LeadFee implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var Amount|null $amount This type provides monetary amount of the special fee.
+     * @var Amount|null $amount A container that returns the amount charged for the lead service with currency information.
     */
     private ?Amount $amount = null;
     
@@ -66,7 +66,7 @@ class LeadFee implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the amount property value. This type provides monetary amount of the special fee.
+     * Gets the amount property value. A container that returns the amount charged for the lead service with currency information.
      * @return Amount|null
     */
     public function getAmount(): ?Amount {
@@ -112,7 +112,7 @@ class LeadFee implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the amount property value. This type provides monetary amount of the special fee.
+     * Sets the amount property value. A container that returns the amount charged for the lead service with currency information.
      * @param Amount|null $value Value to set for the amount property.
     */
     public function setAmount(?Amount $value): void {

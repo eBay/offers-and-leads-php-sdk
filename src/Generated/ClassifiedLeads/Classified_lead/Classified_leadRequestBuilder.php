@@ -56,7 +56,7 @@ class Classified_leadRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * This method retrieves leads for all of the seller's active classified ad listings. Optionally, just those matching specified filter criteria can be returned.<p><span class="tablenote"><b>Note:</b> This is a <a href="https://developer.ebay.com/api-docs/static/versioning.html#limited" target="_blank"> <img src="/cms/img/docs/partners-api.svg" class="legend-icon partners-icon" title="Limited Release"  alt="Limited Release" />(Limited Release)</a> API available only to select developers approved by business units. For information on how to obtain access to this API in production, please contact eBay support.</span></p>
+     * This method retrieves leads for all of the seller's active classified ad listings. Optionally, just those matching specified filter criteria can be returned.<p><span class="tablenote"><strong>Note:</strong> This is a <a href="https://developer.ebay.com/develop/guides-v2/using-ebay-restful-apis#versioning-and-the-api-lifecycle" target="_blank"> <img src="/cms/img/docs/partners-api.svg" class="legend-icon partners-icon" title="Limited Release"  alt="Limited Release" />(Limited Release)</a> API available only to select developers approved by business units. For information on how to obtain access to this API in production, please contact eBay support.</span></p>
      * @param Classified_leadRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<ClassifiedLeadsListResponse|null>
      * @throws Exception
@@ -67,7 +67,7 @@ class Classified_leadRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * This method retrieves leads for all of the seller's active classified ad listings. Optionally, just those matching specified filter criteria can be returned.<p><span class="tablenote"><b>Note:</b> This is a <a href="https://developer.ebay.com/api-docs/static/versioning.html#limited" target="_blank"> <img src="/cms/img/docs/partners-api.svg" class="legend-icon partners-icon" title="Limited Release"  alt="Limited Release" />(Limited Release)</a> API available only to select developers approved by business units. For information on how to obtain access to this API in production, please contact eBay support.</span></p>
+     * This method retrieves leads for all of the seller's active classified ad listings. Optionally, just those matching specified filter criteria can be returned.<p><span class="tablenote"><strong>Note:</strong> This is a <a href="https://developer.ebay.com/develop/guides-v2/using-ebay-restful-apis#versioning-and-the-api-lifecycle" target="_blank"> <img src="/cms/img/docs/partners-api.svg" class="legend-icon partners-icon" title="Limited Release"  alt="Limited Release" />(Limited Release)</a> API available only to select developers approved by business units. For information on how to obtain access to this API in production, please contact eBay support.</span></p>
      * @param Classified_leadRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

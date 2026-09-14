@@ -22,7 +22,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Question
+ * This type contains the body and ID of the question.
 */
 class Question implements AdditionalDataHolder, Parsable 
 {
@@ -32,12 +32,12 @@ class Question implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $body Content of the message is input into this string field.
+     * @var string|null $body This is the content of the message.
     */
     private ?string $body = null;
     
     /**
-     * @var int|null $messageID The unique identifier of the message.
+     * @var int|null $messageID This is the unique identifier of the message.
     */
     private ?int $messageID = null;
     
@@ -66,7 +66,7 @@ class Question implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the body property value. Content of the message is input into this string field.
+     * Gets the body property value. This is the content of the message.
      * @return string|null
     */
     public function getBody(): ?string {
@@ -86,7 +86,7 @@ class Question implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the messageID property value. The unique identifier of the message.
+     * Gets the messageID property value. This is the unique identifier of the message.
      * @return int|null
     */
     public function getMessageID(): ?int {
@@ -112,7 +112,7 @@ class Question implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the body property value. Content of the message is input into this string field.
+     * Sets the body property value. This is the content of the message.
      * @param string|null $value Value to set for the body property.
     */
     public function setBody(?string $value): void {
@@ -120,7 +120,7 @@ class Question implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the messageID property value. The unique identifier of the message.
+     * Sets the messageID property value. This is the unique identifier of the message.
      * @param int|null $value Value to set for the messageID property.
     */
     public function setMessageID(?int $value): void {
