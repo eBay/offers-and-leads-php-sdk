@@ -22,7 +22,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * This type contains an array of for the seller's active classified ad listings, the total number of items, and leads.
+ * This type contains an array of the seller's active classified ad listings and the total number of items and leads.
 */
 class ClassifiedLeadsListResponse implements AdditionalDataHolder, Parsable 
 {

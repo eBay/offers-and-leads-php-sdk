@@ -37,7 +37,7 @@ class ClassifiedLead implements AdditionalDataHolder, Parsable
     private ?string $itemId = null;
     
     /**
-     * @var string|null $itemTitle The title of the listing.<br><br><b>Max length:</b> 80.
+     * @var string|null $itemTitle The title of the listing.<br><br><strong>Maximum length:</strong> 80
     */
     private ?string $itemTitle = null;
     
@@ -92,7 +92,7 @@ class ClassifiedLead implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the itemTitle property value. The title of the listing.<br><br><b>Max length:</b> 80.
+     * Gets the itemTitle property value. The title of the listing.<br><br><strong>Maximum length:</strong> 80
      * @return string|null
     */
     public function getItemTitle(): ?string {
@@ -135,7 +135,7 @@ class ClassifiedLead implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the itemTitle property value. The title of the listing.<br><br><b>Max length:</b> 80.
+     * Sets the itemTitle property value. The title of the listing.<br><br><strong>Maximum length:</strong> 80
      * @param string|null $value Value to set for the itemTitle property.
     */
     public function setItemTitle(?string $value): void {

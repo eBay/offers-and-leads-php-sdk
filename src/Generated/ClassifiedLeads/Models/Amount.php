@@ -22,7 +22,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * This type provides monetary amount of the special fee.
+ * This type provides the monetary amount of the special fee.
 */
 class Amount implements AdditionalDataHolder, Parsable 
 {
@@ -32,22 +32,22 @@ class Amount implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $convertedFromCurrency A three-letter ISO 4217 code that indicates the currency of the amount in the <b>convertedFromValue</b> field. This value is required or returned only if currency conversion/localization is required, and represents the pre-conversion currency.
+     * @var string|null $convertedFromCurrency A three-letter ISO 4217 code that indicates the currency of the amount in the <strong>convertedFromValue</strong> field. This value is required or returned only if currency conversion/localization is required and represents the pre-conversion currency.
     */
     private ?string $convertedFromCurrency = null;
     
     /**
-     * @var string|null $convertedFromValue The monetary amount before any conversion is performed, in the currency specified by the <b>convertedFromCurrency</b> field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value, in the currency specified by the <b>currency</b> field.
+     * @var string|null $convertedFromValue The monetary amount before any conversion is performed in the currency specified by the <strong>convertedFromCurrency</strong> field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value in the currency specified by the <strong>currency</strong> field.
     */
     private ?string $convertedFromValue = null;
     
     /**
-     * @var string|null $currency A three-letter ISO 4217 code that indicates the currency of the amount in the <b>value</b> field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the <b>value</b> field.
+     * @var string|null $currency A three-letter ISO 4217 code that indicates the currency of the amount in the <strong>value</strong> field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the <strong>value</strong> field.
     */
     private ?string $currency = null;
     
     /**
-     * @var string|null $value The monetary amount, in the currency specified by the <b>currency</b> field. If currency conversion/localization is required, this value is the converted amount, and the <b>convertedFromValue</b> field contains the amount in the original currency.
+     * @var string|null $value The monetary amount in the currency specified in the <strong>currency</strong> field. If currency conversion/localization is required, this value is the converted amount, and the <strong>convertedFromValue</strong> field contains the amount in the original currency.
     */
     private ?string $value = null;
     
@@ -76,7 +76,7 @@ class Amount implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the convertedFromCurrency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the <b>convertedFromValue</b> field. This value is required or returned only if currency conversion/localization is required, and represents the pre-conversion currency.
+     * Gets the convertedFromCurrency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the <strong>convertedFromValue</strong> field. This value is required or returned only if currency conversion/localization is required and represents the pre-conversion currency.
      * @return string|null
     */
     public function getConvertedFromCurrency(): ?string {
@@ -84,7 +84,7 @@ class Amount implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the convertedFromValue property value. The monetary amount before any conversion is performed, in the currency specified by the <b>convertedFromCurrency</b> field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value, in the currency specified by the <b>currency</b> field.
+     * Gets the convertedFromValue property value. The monetary amount before any conversion is performed in the currency specified by the <strong>convertedFromCurrency</strong> field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value in the currency specified by the <strong>currency</strong> field.
      * @return string|null
     */
     public function getConvertedFromValue(): ?string {
@@ -92,7 +92,7 @@ class Amount implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the <b>value</b> field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the <b>value</b> field.
+     * Gets the currency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the <strong>value</strong> field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the <strong>value</strong> field.
      * @return string|null
     */
     public function getCurrency(): ?string {
@@ -114,7 +114,7 @@ class Amount implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the value property value. The monetary amount, in the currency specified by the <b>currency</b> field. If currency conversion/localization is required, this value is the converted amount, and the <b>convertedFromValue</b> field contains the amount in the original currency.
+     * Gets the value property value. The monetary amount in the currency specified in the <strong>currency</strong> field. If currency conversion/localization is required, this value is the converted amount, and the <strong>convertedFromValue</strong> field contains the amount in the original currency.
      * @return string|null
     */
     public function getValue(): ?string {
@@ -142,7 +142,7 @@ class Amount implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the convertedFromCurrency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the <b>convertedFromValue</b> field. This value is required or returned only if currency conversion/localization is required, and represents the pre-conversion currency.
+     * Sets the convertedFromCurrency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the <strong>convertedFromValue</strong> field. This value is required or returned only if currency conversion/localization is required and represents the pre-conversion currency.
      * @param string|null $value Value to set for the convertedFromCurrency property.
     */
     public function setConvertedFromCurrency(?string $value): void {
@@ -150,7 +150,7 @@ class Amount implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the convertedFromValue property value. The monetary amount before any conversion is performed, in the currency specified by the <b>convertedFromCurrency</b> field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value, in the currency specified by the <b>currency</b> field.
+     * Sets the convertedFromValue property value. The monetary amount before any conversion is performed in the currency specified by the <strong>convertedFromCurrency</strong> field. This value is required or returned only if currency conversion/localization is required. The value field contains the converted amount of this value in the currency specified by the <strong>currency</strong> field.
      * @param string|null $value Value to set for the convertedFromValue property.
     */
     public function setConvertedFromValue(?string $value): void {
@@ -158,7 +158,7 @@ class Amount implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the <b>value</b> field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the <b>value</b> field.
+     * Sets the currency property value. A three-letter ISO 4217 code that indicates the currency of the amount in the <strong>value</strong> field. If currency conversion/localization is required, this is the post-conversion currency of the amount in the <strong>value</strong> field.
      * @param string|null $value Value to set for the currency property.
     */
     public function setCurrency(?string $value): void {
@@ -166,7 +166,7 @@ class Amount implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the value property value. The monetary amount, in the currency specified by the <b>currency</b> field. If currency conversion/localization is required, this value is the converted amount, and the <b>convertedFromValue</b> field contains the amount in the original currency.
+     * Sets the value property value. The monetary amount in the currency specified in the <strong>currency</strong> field. If currency conversion/localization is required, this value is the converted amount, and the <strong>convertedFromValue</strong> field contains the amount in the original currency.
      * @param string|null $value Value to set for the value property.
     */
     public function setValue(?string $value): void {

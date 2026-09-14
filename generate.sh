@@ -22,7 +22,7 @@ echo "Regenerating REST clients via Kiota..."
 rm -rf src/Generated
 
 kiota generate -l php \
-  -d specs/openapi/classified-leads.yaml \
+  -d specs/openapi/classified-leads.json \
   -c ClassifiedLeadsApiClient \
   -n 'EBay\OffersAndLeads\Generated\ClassifiedLeads' \
   -o src/Generated/ClassifiedLeads \

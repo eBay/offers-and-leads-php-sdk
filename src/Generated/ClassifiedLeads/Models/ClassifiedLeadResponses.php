@@ -22,7 +22,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * This type provides classified lead responses including any contact information that prospective buyers have submitted.
+ * This type provides classified lead responses, including any contact information that prospective buyers have submitted.
 */
 class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable 
 {
@@ -32,12 +32,12 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $additionalInformation This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the <b>memberMessageExchange.question.body</b> field, if returned. <br><br><span class="tablenote"> <strong>Note:</strong> Retrieve the <b>memberMessageExchange</b> container to retrieve the entire exchange between the seller and the prospective buyer (all messages).</span>
+     * @var string|null $additionalInformation This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the <strong>memberMessageExchange.question.body</strong> field, if returned. <br><br><span class="tablenote"> <strong>Note:</strong> Retrieve the <strong>memberMessageExchange</strong> container to retrieve the entire exchange between the seller and the prospective buyer (all messages).</span>
     */
     private ?string $additionalInformation = null;
     
     /**
-     * @var ContactInformation|null $contactInformation This type consists of contact information for the prospective buyer.
+     * @var ContactInformation|null $contactInformation This container consists of contact information for the prospective buyer. Fields in this container are returned if provided. This container will not be returned if the buyer did not provide any contact information.
     */
     private ?ContactInformation $contactInformation = null;
     
@@ -47,27 +47,27 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     private ?string $email = null;
     
     /**
-     * @var string|null $externalEmail Email address for the prospective buyer as entered in the lead form on the <b>View Item</b> page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies to only eBay Motors and eBay Motors categories.
+     * @var string|null $externalEmail Email address for the prospective buyer as entered in the lead form on the <strong>View Item</strong> page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies only to eBay Motors and eBay Motors categories.
     */
     private ?string $externalEmail = null;
     
     /**
-     * @var bool|null $financingAnswer Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * @var bool|null $financingAnswer Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and Motors categories.
     */
     private ?bool $financingAnswer = null;
     
     /**
-     * @var LeadFee|null $leadFee This type returns the amount charged for the lead service.
+     * @var LeadFee|null $leadFee A container that returns the amount charged for this pay-per-lead contact in the item's site local currency.
     */
     private ?LeadFee $leadFee = null;
     
     /**
-     * @var string|null $leadStatus The enumeration value in this field indicates whether or not the seller has responded to the lead, or if this is new. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/leads/types/api:LeadStatus'>eBay API documentation</a>
+     * @var LeadStatus|null $leadStatus The enumeration value in this field indicates whether or not the seller has responded to the lead or if this is new.
     */
-    private ?string $leadStatus = null;
+    private ?LeadStatus $leadStatus = null;
     
     /**
-     * @var MemberMessage|null $memberMessage This type defines the field containing any mail message content shared between the seller and prospective buyer.
+     * @var MemberMessage|null $memberMessage Contains any mail message content shared between the seller and prospective buyer. <br><br>Only returned if the <strong>includeMessages</strong> boolean is <code>true</code>.
     */
     private ?MemberMessage $memberMessage = null;
     
@@ -77,17 +77,17 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     private ?string $submittedTime = null;
     
     /**
-     * @var string|null $tradeInMake The make of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * @var string|null $tradeInMake The make of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and eBay Motors categories.
     */
     private ?string $tradeInMake = null;
     
     /**
-     * @var string|null $tradeInModel The model of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * @var string|null $tradeInModel The model of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and eBay Motors categories.
     */
     private ?string $tradeInModel = null;
     
     /**
-     * @var string|null $tradeInYear The year of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * @var string|null $tradeInYear The year of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and eBay Motors categories.
     */
     private ?string $tradeInYear = null;
     
@@ -121,7 +121,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the additionalInformation property value. This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the <b>memberMessageExchange.question.body</b> field, if returned. <br><br><span class="tablenote"> <strong>Note:</strong> Retrieve the <b>memberMessageExchange</b> container to retrieve the entire exchange between the seller and the prospective buyer (all messages).</span>
+     * Gets the additionalInformation property value. This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the <strong>memberMessageExchange.question.body</strong> field, if returned. <br><br><span class="tablenote"> <strong>Note:</strong> Retrieve the <strong>memberMessageExchange</strong> container to retrieve the entire exchange between the seller and the prospective buyer (all messages).</span>
      * @return string|null
     */
     public function getAdditionalInformation(): ?string {
@@ -129,7 +129,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contactInformation property value. This type consists of contact information for the prospective buyer.
+     * Gets the contactInformation property value. This container consists of contact information for the prospective buyer. Fields in this container are returned if provided. This container will not be returned if the buyer did not provide any contact information.
      * @return ContactInformation|null
     */
     public function getContactInformation(): ?ContactInformation {
@@ -145,7 +145,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the externalEmail property value. Email address for the prospective buyer as entered in the lead form on the <b>View Item</b> page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies to only eBay Motors and eBay Motors categories.
+     * Gets the externalEmail property value. Email address for the prospective buyer as entered in the lead form on the <strong>View Item</strong> page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies only to eBay Motors and eBay Motors categories.
      * @return string|null
     */
     public function getExternalEmail(): ?string {
@@ -165,7 +165,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
             'externalEmail' => fn(ParseNode $n) => $o->setExternalEmail($n->getStringValue()),
             'financingAnswer' => fn(ParseNode $n) => $o->setFinancingAnswer($n->getBooleanValue()),
             'leadFee' => fn(ParseNode $n) => $o->setLeadFee($n->getObjectValue([LeadFee::class, 'createFromDiscriminatorValue'])),
-            'leadStatus' => fn(ParseNode $n) => $o->setLeadStatus($n->getStringValue()),
+            'leadStatus' => fn(ParseNode $n) => $o->setLeadStatus($n->getEnumValue(LeadStatus::class)),
             'memberMessage' => fn(ParseNode $n) => $o->setMemberMessage($n->getObjectValue([MemberMessage::class, 'createFromDiscriminatorValue'])),
             'submittedTime' => fn(ParseNode $n) => $o->setSubmittedTime($n->getStringValue()),
             'tradeInMake' => fn(ParseNode $n) => $o->setTradeInMake($n->getStringValue()),
@@ -176,7 +176,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the financingAnswer property value. Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * Gets the financingAnswer property value. Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and Motors categories.
      * @return bool|null
     */
     public function getFinancingAnswer(): ?bool {
@@ -184,7 +184,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadFee property value. This type returns the amount charged for the lead service.
+     * Gets the leadFee property value. A container that returns the amount charged for this pay-per-lead contact in the item's site local currency.
      * @return LeadFee|null
     */
     public function getLeadFee(): ?LeadFee {
@@ -192,15 +192,15 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadStatus property value. The enumeration value in this field indicates whether or not the seller has responded to the lead, or if this is new. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/leads/types/api:LeadStatus'>eBay API documentation</a>
-     * @return string|null
+     * Gets the leadStatus property value. The enumeration value in this field indicates whether or not the seller has responded to the lead or if this is new.
+     * @return LeadStatus|null
     */
-    public function getLeadStatus(): ?string {
+    public function getLeadStatus(): ?LeadStatus {
         return $this->leadStatus;
     }
 
     /**
-     * Gets the memberMessage property value. This type defines the field containing any mail message content shared between the seller and prospective buyer.
+     * Gets the memberMessage property value. Contains any mail message content shared between the seller and prospective buyer. <br><br>Only returned if the <strong>includeMessages</strong> boolean is <code>true</code>.
      * @return MemberMessage|null
     */
     public function getMemberMessage(): ?MemberMessage {
@@ -216,7 +216,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tradeInMake property value. The make of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * Gets the tradeInMake property value. The make of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and eBay Motors categories.
      * @return string|null
     */
     public function getTradeInMake(): ?string {
@@ -224,7 +224,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tradeInModel property value. The model of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * Gets the tradeInModel property value. The model of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and eBay Motors categories.
      * @return string|null
     */
     public function getTradeInModel(): ?string {
@@ -232,7 +232,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tradeInYear property value. The year of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * Gets the tradeInYear property value. The year of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and eBay Motors categories.
      * @return string|null
     */
     public function getTradeInYear(): ?string {
@@ -258,7 +258,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('externalEmail', $this->getExternalEmail());
         $writer->writeBooleanValue('financingAnswer', $this->getFinancingAnswer());
         $writer->writeObjectValue('leadFee', $this->getLeadFee());
-        $writer->writeStringValue('leadStatus', $this->getLeadStatus());
+        $writer->writeEnumValue('leadStatus', $this->getLeadStatus());
         $writer->writeObjectValue('memberMessage', $this->getMemberMessage());
         $writer->writeStringValue('submittedTime', $this->getSubmittedTime());
         $writer->writeStringValue('tradeInMake', $this->getTradeInMake());
@@ -277,7 +277,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the additionalInformation property value. This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the <b>memberMessageExchange.question.body</b> field, if returned. <br><br><span class="tablenote"> <strong>Note:</strong> Retrieve the <b>memberMessageExchange</b> container to retrieve the entire exchange between the seller and the prospective buyer (all messages).</span>
+     * Sets the additionalInformation property value. This field shows the first message that was sent from the prospective buyer to the seller. This will be the same content as in the <strong>memberMessageExchange.question.body</strong> field, if returned. <br><br><span class="tablenote"> <strong>Note:</strong> Retrieve the <strong>memberMessageExchange</strong> container to retrieve the entire exchange between the seller and the prospective buyer (all messages).</span>
      * @param string|null $value Value to set for the additionalInformation property.
     */
     public function setAdditionalInformation(?string $value): void {
@@ -285,7 +285,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contactInformation property value. This type consists of contact information for the prospective buyer.
+     * Sets the contactInformation property value. This container consists of contact information for the prospective buyer. Fields in this container are returned if provided. This container will not be returned if the buyer did not provide any contact information.
      * @param ContactInformation|null $value Value to set for the contactInformation property.
     */
     public function setContactInformation(?ContactInformation $value): void {
@@ -301,7 +301,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the externalEmail property value. Email address for the prospective buyer as entered in the lead form on the <b>View Item</b> page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies to only eBay Motors and eBay Motors categories.
+     * Sets the externalEmail property value. Email address for the prospective buyer as entered in the lead form on the <strong>View Item</strong> page. Provides a way for sellers to contact prospective buyers who choose not to log in to eBay. This applies only to eBay Motors and eBay Motors categories.
      * @param string|null $value Value to set for the externalEmail property.
     */
     public function setExternalEmail(?string $value): void {
@@ -309,7 +309,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the financingAnswer property value. Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * Sets the financingAnswer property value. Boolean that indicates if a prospective buyer answered whether or not they would like financing. Entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and Motors categories.
      * @param bool|null $value Value to set for the financingAnswer property.
     */
     public function setFinancingAnswer(?bool $value): void {
@@ -317,7 +317,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadFee property value. This type returns the amount charged for the lead service.
+     * Sets the leadFee property value. A container that returns the amount charged for this pay-per-lead contact in the item's site local currency.
      * @param LeadFee|null $value Value to set for the leadFee property.
     */
     public function setLeadFee(?LeadFee $value): void {
@@ -325,15 +325,15 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadStatus property value. The enumeration value in this field indicates whether or not the seller has responded to the lead, or if this is new. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/sell/leads/types/api:LeadStatus'>eBay API documentation</a>
-     * @param string|null $value Value to set for the leadStatus property.
+     * Sets the leadStatus property value. The enumeration value in this field indicates whether or not the seller has responded to the lead or if this is new.
+     * @param LeadStatus|null $value Value to set for the leadStatus property.
     */
-    public function setLeadStatus(?string $value): void {
+    public function setLeadStatus(?LeadStatus $value): void {
         $this->leadStatus = $value;
     }
 
     /**
-     * Sets the memberMessage property value. This type defines the field containing any mail message content shared between the seller and prospective buyer.
+     * Sets the memberMessage property value. Contains any mail message content shared between the seller and prospective buyer. <br><br>Only returned if the <strong>includeMessages</strong> boolean is <code>true</code>.
      * @param MemberMessage|null $value Value to set for the memberMessage property.
     */
     public function setMemberMessage(?MemberMessage $value): void {
@@ -349,7 +349,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tradeInMake property value. The make of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * Sets the tradeInMake property value. The make of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and eBay Motors categories.
      * @param string|null $value Value to set for the tradeInMake property.
     */
     public function setTradeInMake(?string $value): void {
@@ -357,7 +357,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tradeInModel property value. The model of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * Sets the tradeInModel property value. The model of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and eBay Motors categories.
      * @param string|null $value Value to set for the tradeInModel property.
     */
     public function setTradeInModel(?string $value): void {
@@ -365,7 +365,7 @@ class ClassifiedLeadResponses implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tradeInYear property value. The year of the vehicle the prospective buyer would like to trade in. Entered on the lead form on the <b>View Item</b> page. Applies to eBay Motors and Motors categories only.
+     * Sets the tradeInYear property value. The year of the vehicle the prospective buyer would like to trade in. This is entered on the lead form on the <strong>View Item</strong> page. This applies only to eBay Motors and eBay Motors categories.
      * @param string|null $value Value to set for the tradeInYear property.
     */
     public function setTradeInYear(?string $value): void {

@@ -32,17 +32,17 @@ class MemberMessageExchange implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $creationDate Date the message was created. Returned if the parent container is returned.
+     * @var string|null $creationDate This is the date the message was created. It is returned if the parent container is returned.
     */
     private ?string $creationDate = null;
     
     /**
-     * @var Question|null $question Question
+     * @var Question|null $question This contains all the information about the question being asked. It is returned if the parent container is returned.
     */
     private ?Question $question = null;
     
     /**
-     * @var string|null $response An answer to the question. Contains the body of the seller's response message, if sent.
+     * @var string|null $response This is an answer to the question. It contains the body of the seller's response message, if sent.
     */
     private ?string $response = null;
     
@@ -71,7 +71,7 @@ class MemberMessageExchange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the creationDate property value. Date the message was created. Returned if the parent container is returned.
+     * Gets the creationDate property value. This is the date the message was created. It is returned if the parent container is returned.
      * @return string|null
     */
     public function getCreationDate(): ?string {
@@ -92,7 +92,7 @@ class MemberMessageExchange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the question property value. Question
+     * Gets the question property value. This contains all the information about the question being asked. It is returned if the parent container is returned.
      * @return Question|null
     */
     public function getQuestion(): ?Question {
@@ -100,7 +100,7 @@ class MemberMessageExchange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the response property value. An answer to the question. Contains the body of the seller's response message, if sent.
+     * Gets the response property value. This is an answer to the question. It contains the body of the seller's response message, if sent.
      * @return string|null
     */
     public function getResponse(): ?string {
@@ -127,7 +127,7 @@ class MemberMessageExchange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the creationDate property value. Date the message was created. Returned if the parent container is returned.
+     * Sets the creationDate property value. This is the date the message was created. It is returned if the parent container is returned.
      * @param string|null $value Value to set for the creationDate property.
     */
     public function setCreationDate(?string $value): void {
@@ -135,7 +135,7 @@ class MemberMessageExchange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the question property value. Question
+     * Sets the question property value. This contains all the information about the question being asked. It is returned if the parent container is returned.
      * @param Question|null $value Value to set for the question property.
     */
     public function setQuestion(?Question $value): void {
@@ -143,7 +143,7 @@ class MemberMessageExchange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the response property value. An answer to the question. Contains the body of the seller's response message, if sent.
+     * Sets the response property value. This is an answer to the question. It contains the body of the seller's response message, if sent.
      * @param string|null $value Value to set for the response property.
     */
     public function setResponse(?string $value): void {
