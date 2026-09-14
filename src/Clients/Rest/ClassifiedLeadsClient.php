@@ -24,8 +24,6 @@ use EBay\OffersAndLeads\Configuration\RequestOptions;
 use EBay\OffersAndLeads\Generated\ClassifiedLeads\ClassifiedLeadsApiClient;
 use EBay\OffersAndLeads\Generated\ClassifiedLeads\Models\ClassifiedLead;
 use EBay\OffersAndLeads\Generated\ClassifiedLeads\Models\ClassifiedLeadsListResponse;
-use EBay\OffersAndLeads\Generated\ClassifiedLeads\Classified_lead\Classified_leadRequestBuilderGetRequestConfiguration;
-use EBay\OffersAndLeads\Generated\ClassifiedLeads\Classified_lead\Item\WithItemItemRequestBuilderGetRequestConfiguration;
 use GuzzleHttp\Client as GuzzleClient;
 use Microsoft\Kiota\Abstractions\Authentication\BaseBearerTokenAuthenticationProvider;
 use Microsoft\Kiota\Http\GuzzleRequestAdapter;
@@ -62,9 +60,9 @@ final class ClassifiedLeadsClient
         }
         return $this->call($accessToken, fn($api) =>
             $api->classified_lead()->get(
-                new Classified_leadRequestBuilderGetRequestConfiguration(
+                new \EBay\OffersAndLeads\Generated\ClassifiedLeads\Classified_lead\Classified_leadRequestBuilderGetRequestConfiguration(
                     headers: $headers,
-                    queryParameters: Classified_leadRequestBuilderGetRequestConfiguration::createQueryParameters(
+                    queryParameters: \EBay\OffersAndLeads\Generated\ClassifiedLeads\Classified_lead\Classified_leadRequestBuilderGetRequestConfiguration::createQueryParameters(
                         endTime: $endTime,
                         includeMessages: $includeMessages,
                         startTime: $startTime,
@@ -92,9 +90,9 @@ final class ClassifiedLeadsClient
         }
         return $this->call($accessToken, fn($api) =>
             $api->classified_lead()->byItemId($itemId)->get(
-                new WithItemItemRequestBuilderGetRequestConfiguration(
+                new \EBay\OffersAndLeads\Generated\ClassifiedLeads\Classified_lead\Item\WithItemItemRequestBuilderGetRequestConfiguration(
                     headers: $headers,
-                    queryParameters: WithItemItemRequestBuilderGetRequestConfiguration::createQueryParameters(
+                    queryParameters: \EBay\OffersAndLeads\Generated\ClassifiedLeads\Classified_lead\Item\WithItemItemRequestBuilderGetRequestConfiguration::createQueryParameters(
                         endTime: $endTime,
                         includeMessages: $includeMessages,
                         startTime: $startTime,
