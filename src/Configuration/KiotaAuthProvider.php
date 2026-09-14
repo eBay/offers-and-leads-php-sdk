@@ -18,9 +18,9 @@ declare(strict_types=1);
 
 namespace EBay\OffersAndLeads\Configuration;
 
+use Microsoft\Kiota\Abstractions\Authentication\AccessTokenProvider;
 use Http\Promise\FulfilledPromise;
 use Http\Promise\Promise;
-use Microsoft\Kiota\Abstractions\Authentication\AccessTokenProvider;
 use Microsoft\Kiota\Abstractions\Authentication\AllowedHostsValidator;
 
 final class KiotaAuthProvider implements AccessTokenProvider

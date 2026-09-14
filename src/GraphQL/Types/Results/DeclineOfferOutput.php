@@ -18,18 +18,13 @@ declare(strict_types=1);
 
 namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 
-/**
- * Union: DeclineOfferSent | OfferBusinessRulesViolated | ReferenceArgumentsNotFound
- */
 abstract readonly class DeclineOfferOutput
 {
-    abstract public function getTypename(): string;
-
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): DeclineOfferSent|OfferBusinessRulesViolated|ReferenceArgumentsNotFound
     {
         return match ($data['__typename'] ?? null) {
-            'DeclineOfferSent'           => DeclineOfferSent::fromArray($data),
+            'DeclineOfferSent' => DeclineOfferSent::fromArray($data),
             'OfferBusinessRulesViolated' => OfferBusinessRulesViolated::fromArray($data),
             'ReferenceArgumentsNotFound' => ReferenceArgumentsNotFound::fromArray($data),
             default => throw new \UnexpectedValueException(

@@ -21,16 +21,16 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 readonly class Amount
 {
     public function __construct(
-        public string $value,
         public ?string $currency = null,
+        public ?string $value = null,
     ) {}
 
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            value: $data['value'],
             currency: $data['currency'] ?? null,
+            value: $data['value'] ?? null,
         );
     }
 }

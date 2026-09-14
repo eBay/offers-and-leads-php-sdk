@@ -19,12 +19,13 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "Regenerating REST clients via Kiota..."
+rm -rf src/Generated
 
 kiota generate -l php \
   -d specs/openapi/classified-leads.yaml \
-  -c SellLeadsApiClient \
-  -n 'EBay\OffersAndLeads\Generated\SellLeads' \
-  -o src/Generated/SellLeads \
+  -c ClassifiedLeadsApiClient \
+  -n 'EBay\OffersAndLeads\Generated\ClassifiedLeads' \
+  -o src/Generated/ClassifiedLeads \
   --ebc --co
 
 echo "Adding license headers to generated files..."

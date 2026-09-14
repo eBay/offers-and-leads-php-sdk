@@ -25,21 +25,24 @@ readonly class PageInfoInput
         public ?string $pageCursor = null,
     ) {}
 
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
             maxPageSize: $data['maxPageSize'],
-            pageCursor:  $data['pageCursor'] ?? null,
+            pageCursor: $data['pageCursor'] ?? null,
         );
     }
 
     /** @return array<string, mixed> */
     public function toArray(): array
     {
-        return array_filter([
-            'maxPageSize' => $this->maxPageSize,
-            'pageCursor'  => $this->pageCursor,
-        ], fn($v) => $v !== null);
+        return array_filter(
+            [
+                'maxPageSize' => $this->maxPageSize,
+                'pageCursor' => $this->pageCursor,
+            ],
+            static fn($value) => $value !== null,
+        );
     }
 }

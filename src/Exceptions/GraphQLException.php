@@ -21,39 +21,14 @@ namespace EBay\OffersAndLeads\Exceptions;
 class GraphQLException extends SdkException
 {
     /** @param string[] $errors */
-    public function __construct(
-        private readonly array $errors,
-        private readonly ?int $httpStatusCode = null,
-        private readonly ?string $httpBody = null,
-    ) {
-        $message = $httpStatusCode !== null
-            ? sprintf('HTTP %d: %s', $httpStatusCode, $httpBody ?? '')
-            : 'GraphQL errors: ' . implode('; ', $errors);
-
-        parent::__construct($message);
-    }
-
-    /**
-     * Build an exception from a failed HTTP response (non-2xx).
-     */
-    public static function fromHttpError(int $statusCode, string $body): self
+    public function __construct(private readonly array $errors)
     {
-        return new self([], $statusCode, $body);
+        parent::__construct('GraphQL errors: ' . implode('; ', $errors));
     }
 
     /** @return string[] */
     public function getErrors(): array
     {
         return $this->errors;
-    }
-
-    public function getHttpStatusCode(): ?int
-    {
-        return $this->httpStatusCode;
-    }
-
-    public function getHttpBody(): ?string
-    {
-        return $this->httpBody;
     }
 }

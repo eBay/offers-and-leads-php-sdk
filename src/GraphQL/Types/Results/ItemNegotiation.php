@@ -20,23 +20,18 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 
 readonly class ItemNegotiation
 {
-    /**
-     * @param Negotiation[] $negotiations
-     */
     public function __construct(
-        public array $negotiations,
-        public ?NegotiationItem $item = null,
+        public ?Item $item = null,
+        /** @var Negotiation[] */
+        public array $negotiations = [],
     ) {}
 
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            negotiations: array_map(
-                fn(array $n) => Negotiation::fromArray($n),
-                $data['negotiations'] ?? []
-            ),
-            item: isset($data['item']) ? NegotiationItem::fromArray($data['item']) : null,
+            item: isset($data['item']) ? Item::fromArray($data['item']) : null,
+            negotiations: array_map(fn($item) => Negotiation::fromArray($item), $data['negotiations'] ?? []),
         );
     }
 }

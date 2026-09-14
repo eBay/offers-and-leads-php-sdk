@@ -20,30 +20,20 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 
 readonly class OfferBusinessRulesViolated
 {
-    /**
-     * @param BusinessRuleViolation[] $violations
-     */
     public function __construct(
-        public string $errorCode,
-        public string $errorMessage,
-        public array $violations,
+        public ?string $errorCode = null,
+        public ?string $errorMessage = null,
+        /** @var OfferBusinessRuleViolation[] */
+        public array $violations = [],
     ) {}
 
-    public function getTypename(): string
-    {
-        return 'OfferBusinessRulesViolated';
-    }
-
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            errorCode: $data['errorCode'],
-            errorMessage: $data['errorMessage'],
-            violations: array_map(
-                fn(array $v) => BusinessRuleViolation::fromArray($v),
-                $data['violations'] ?? []
-            ),
+            errorCode: $data['errorCode'] ?? null,
+            errorMessage: $data['errorMessage'] ?? null,
+            violations: array_map(fn($item) => OfferBusinessRuleViolation::fromArray($item), $data['violations'] ?? []),
         );
     }
 }
