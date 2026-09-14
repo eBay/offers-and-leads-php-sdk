@@ -21,22 +21,25 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Inputs;
 readonly class SellerNegotiationHistoryInput
 {
     public function __construct(
-        public ?NegotiationHistoryFiltersInput $filters = null,
+        public ?NegotiationHistoryFilters $filters = null,
     ) {}
 
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            filters: isset($data['filters']) ? NegotiationHistoryFiltersInput::fromArray($data['filters']) : null,
+            filters: isset($data['filters']) ? NegotiationHistoryFilters::fromArray($data['filters']) : null,
         );
     }
 
     /** @return array<string, mixed> */
     public function toArray(): array
     {
-        return array_filter([
-            'filters' => $this->filters !== null ? (object)$this->filters->toArray() : null,
-        ], fn($v) => $v !== null);
+        return array_filter(
+            [
+                'filters' => $this->filters !== null ? (object)$this->filters->toArray() : null,
+            ],
+            static fn($value) => $value !== null,
+        );
     }
 }

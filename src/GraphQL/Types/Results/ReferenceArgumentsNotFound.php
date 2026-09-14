@@ -20,27 +20,20 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 
 readonly class ReferenceArgumentsNotFound
 {
-    /**
-     * @param string[] $argumentNames
-     */
     public function __construct(
-        public string $errorCode,
-        public string $errorMessage,
-        public array $argumentNames,
+        /** @var array<int, mixed> */
+        public array $argumentNames = [],
+        public ?string $errorCode = null,
+        public ?string $errorMessage = null,
     ) {}
 
-    public function getTypename(): string
-    {
-        return 'ReferenceArgumentsNotFound';
-    }
-
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            errorCode: $data['errorCode'],
-            errorMessage: $data['errorMessage'],
             argumentNames: $data['argumentNames'] ?? [],
+            errorCode: $data['errorCode'] ?? null,
+            errorMessage: $data['errorMessage'] ?? null,
         );
     }
 }

@@ -21,33 +21,32 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 readonly class NegotiationOfferDetails
 {
     public function __construct(
-        public string $offerId,
-        public string $status,
+        public ?string $offerId = null,
+        public ?string $status = null,
         public ?string $offerCreatorRole = null,
-        public ?string $createdAt = null,
-        public ?string $updatedAt = null,
+        public ?User $offerCreatorUser = null,
         public ?int $quantity = null,
-        public ?ConvertedAmount $offerPrice = null,
+        public ?string $updatedAt = null,
+        public ?string $createdAt = null,
         public ?string $expiresAt = null,
         public ?string $message = null,
-        /** @var array{shippingZone: array{postalCode: string|null}|null}|null */
-        public ?array $offerCreatorUser = null,
+        public ?ConvertedAmount $offerPrice = null,
     ) {}
 
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            offerId: $data['offerId'],
-            status: $data['status'],
+            offerId: $data['offerId'] ?? null,
+            status: $data['status'] ?? null,
             offerCreatorRole: $data['offerCreatorRole'] ?? null,
-            createdAt: $data['createdAt'] ?? null,
-            updatedAt: $data['updatedAt'] ?? null,
+            offerCreatorUser: isset($data['offerCreatorUser']) ? User::fromArray($data['offerCreatorUser']) : null,
             quantity: $data['quantity'] ?? null,
-            offerPrice: isset($data['offerPrice']) ? ConvertedAmount::fromArray($data['offerPrice']) : null,
+            updatedAt: $data['updatedAt'] ?? null,
+            createdAt: $data['createdAt'] ?? null,
             expiresAt: $data['expiresAt'] ?? null,
             message: $data['message'] ?? null,
-            offerCreatorUser: $data['offerCreatorUser'] ?? null,
+            offerPrice: isset($data['offerPrice']) ? ConvertedAmount::fromArray($data['offerPrice']) : null,
         );
     }
 }

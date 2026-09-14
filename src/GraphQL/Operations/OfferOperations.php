@@ -22,31 +22,37 @@ final class OfferOperations
 {
     public static function ACCEPT_OFFER(): string
     {
-        return (string) file_get_contents(__DIR__ . '/acceptOffer.graphql');
-    }
-
-    public static function DECLINE_OFFER(): string
-    {
-        return (string) file_get_contents(__DIR__ . '/declineOffer.graphql');
-    }
-
-    public static function SELLER_NEGOTIATION_HISTORY(): string
-    {
-        return (string) file_get_contents(__DIR__ . '/sellerNegotiationHistory.graphql');
+        return file_get_contents(__DIR__ . '/acceptOffer.graphql')
+            ?: throw new \RuntimeException('Failed to read bundled GraphQL file: acceptOffer.graphql');
     }
 
     public static function BUYER_NEGOTIATION_HISTORY(): string
     {
-        return (string) file_get_contents(__DIR__ . '/buyerNegotiationHistory.graphql');
+        return file_get_contents(__DIR__ . '/buyerNegotiationHistory.graphql')
+            ?: throw new \RuntimeException('Failed to read bundled GraphQL file: buyerNegotiationHistory.graphql');
     }
 
     public static function COUNTER_OFFER(): string
     {
-        return (string) file_get_contents(__DIR__ . '/counterOffer.graphql');
+        return file_get_contents(__DIR__ . '/counterOffer.graphql')
+            ?: throw new \RuntimeException('Failed to read bundled GraphQL file: counterOffer.graphql');
+    }
+
+    public static function DECLINE_OFFER(): string
+    {
+        return file_get_contents(__DIR__ . '/declineOffer.graphql')
+            ?: throw new \RuntimeException('Failed to read bundled GraphQL file: declineOffer.graphql');
     }
 
     public static function MAKE_OFFER(): string
     {
-        return (string) file_get_contents(__DIR__ . '/makeOffer.graphql');
+        return file_get_contents(__DIR__ . '/makeOffer.graphql')
+            ?: throw new \RuntimeException('Failed to read bundled GraphQL file: makeOffer.graphql');
+    }
+
+    public static function SELLER_NEGOTIATION_HISTORY(): string
+    {
+        return file_get_contents(__DIR__ . '/sellerNegotiationHistory.graphql')
+            ?: throw new \RuntimeException('Failed to read bundled GraphQL file: sellerNegotiationHistory.graphql');
     }
 }

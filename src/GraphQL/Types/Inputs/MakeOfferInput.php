@@ -20,35 +20,35 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Inputs;
 
 readonly class MakeOfferInput
 {
-    /**
-     * @param array{value: string, currency: string} $proposedPrice
-     */
     public function __construct(
         public string $itemId,
-        public array $proposedPrice,
-        public ?int $quantity = null,
+        public AmountInput $proposedPrice,
         public ?string $message = null,
+        public ?int $quantity = null,
     ) {}
 
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            itemId:        $data['itemId'],
-            proposedPrice: $data['proposedPrice'],
-            quantity:      $data['quantity'] ?? null,
-            message:       $data['message'] ?? null,
+            itemId: $data['itemId'],
+            message: $data['message'] ?? null,
+            proposedPrice: AmountInput::fromArray($data['proposedPrice']),
+            quantity: $data['quantity'] ?? null,
         );
     }
 
     /** @return array<string, mixed> */
     public function toArray(): array
     {
-        return array_filter([
-            'itemId'        => $this->itemId,
-            'proposedPrice' => $this->proposedPrice,
-            'quantity'      => $this->quantity,
-            'message'       => $this->message,
-        ], fn($v) => $v !== null);
+        return array_filter(
+            [
+                'itemId' => $this->itemId,
+                'message' => $this->message,
+                'proposedPrice' => (object)$this->proposedPrice->toArray(),
+                'quantity' => $this->quantity,
+            ],
+            static fn($value) => $value !== null,
+        );
     }
 }

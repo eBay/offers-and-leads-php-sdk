@@ -18,22 +18,17 @@ declare(strict_types=1);
 
 namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 
-readonly class CounterOfferSent extends CounterOfferOutput
+readonly class CounterOfferSent
 {
     public function __construct(
-        public NegotiationOfferDetails $offer,
+        public ?NegotiationOfferDetails $offer = null,
     ) {}
 
-    public function getTypename(): string
-    {
-        return 'CounterOfferSent';
-    }
-
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            offer: NegotiationOfferDetails::fromArray($data['offer']),
+            offer: isset($data['offer']) ? NegotiationOfferDetails::fromArray($data['offer']) : null,
         );
     }
 }

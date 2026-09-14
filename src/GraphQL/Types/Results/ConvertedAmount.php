@@ -21,16 +21,16 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 readonly class ConvertedAmount
 {
     public function __construct(
-        public Amount $original,
         public ?Amount $converted = null,
+        public ?Amount $original = null,
     ) {}
 
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            original: Amount::fromArray($data['original']),
             converted: isset($data['converted']) ? Amount::fromArray($data['converted']) : null,
+            original: isset($data['original']) ? Amount::fromArray($data['original']) : null,
         );
     }
 }

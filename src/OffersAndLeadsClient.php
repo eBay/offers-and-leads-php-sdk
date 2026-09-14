@@ -20,19 +20,19 @@ namespace EBay\OffersAndLeads;
 
 use EBay\OffersAndLeads\Clients\GraphQL\DynamicGraphQLClient;
 use EBay\OffersAndLeads\Clients\GraphQL\OffersGraphQLClient;
-use EBay\OffersAndLeads\Clients\Rest\LeadsClient;
+use EBay\OffersAndLeads\Clients\Rest\ClassifiedLeadsClient;
 use EBay\OffersAndLeads\Configuration\OffersAndLeadsConfiguration;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Middleware;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
+/**
+ * Main entry point for the eBay Offers and Leads PHP SDK.
+ */
 final class OffersAndLeadsClient
 {
-    /** REST: Classified Leads API */
-    public readonly LeadsClient $leads;
-
-    /** GraphQL: acceptOffer, declineOffer, sellerNegotiationHistory */
+    public readonly ClassifiedLeadsClient $classifiedLeads;
     public readonly OffersGraphQLClient $offers;
 
     public function __construct(
@@ -41,38 +41,46 @@ final class OffersAndLeadsClient
     ) {
         $guzzle ??= $this->buildGuzzle($config);
 
-        // REST — Classified Leads (adapter built per-call inside LeadsClient)
-        $this->leads = new LeadsClient($guzzle, $config);
+        $this->classifiedLeads = new ClassifiedLeadsClient($guzzle, $config);
 
-        // GraphQL — Offers & Negotiation History
         $this->offers = new OffersGraphQLClient(
             new DynamicGraphQLClient($guzzle, $config)
         );
     }
 
+    /**
+     * Build a Guzzle client with optional diagnostic logging middleware.
+     * When $config->diagnosticLogging is true, all non-2xx responses are
+     * logged to STDERR with method, URI, status code, and response body.
+     */
     private function buildGuzzle(OffersAndLeadsConfiguration $config): GuzzleClient
     {
         $stack = HandlerStack::create();
 
         if ($config->diagnosticLogging) {
-            $stack->push(Middleware::tap(
-                before: static function (RequestInterface $request): void {
-                    error_log(sprintf(
-                        '[OffersAndLeads] --> %s %s',
-                        $request->getMethod(),
-                        str_replace(["\r", "\n"], ' ', (string) $request->getUri()),
-                    ));
-                },
-                after: static function (RequestInterface $request, array $options, mixed $response): void {
-                    // $response is a GuzzleHttp promise; log the settled value when available
-                    if (is_object($response) && method_exists($response, 'then')) {
-                        $response->then(static function (mixed $res) use ($request): void {
-                            $status = is_object($res) && method_exists($res, 'getStatusCode') ? $res->getStatusCode() : '?';
-                            error_log(sprintf('[OffersAndLeads] <-- %s %s', $status, str_replace(["\r", "\n"], ' ', (string) $request->getUri())));
-                        });
-                    }
-                },
-            ), 'diagnosticLogging');
+            $stack->push(static function (callable $handler): callable {
+                return static function (RequestInterface $request, array $options) use ($handler): mixed {
+                    return $handler($request, $options)->then(
+                        static function (ResponseInterface $response) use ($request): ResponseInterface {
+                            $status = $response->getStatusCode();
+                            if ($status < 200 || $status >= 300) {
+                                $body = (string) $response->getBody();
+                                fwrite(
+                                    STDERR,
+                                    sprintf(
+                                        "[OffersAndLeadsSDK] %s %s -> HTTP %d\n%s\n",
+                                        $request->getMethod(),
+                                        str_replace(["\r", "\n"], ' ', (string) $request->getUri()),
+                                        $status,
+                                        $body
+                                    )
+                                );
+                            }
+                            return $response;
+                        }
+                    );
+                };
+            });
         }
 
         return new GuzzleClient([

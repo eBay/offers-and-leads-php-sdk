@@ -18,26 +18,19 @@ declare(strict_types=1);
 
 namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 
-readonly class AcceptOfferSent extends AcceptOfferOutput
+readonly class AcceptOfferSent
 {
     public function __construct(
-        public NegotiationOfferDetails $offer,
-        public ?PurchaseReference $purchaseReference = null,
+        public ?NegotiationOfferDetails $offer = null,
+        public ItemCommitment|null $purchaseReference = null,
     ) {}
 
-    public function getTypename(): string
-    {
-        return 'AcceptOfferSent';
-    }
-
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            offer: NegotiationOfferDetails::fromArray($data['offer']),
-            purchaseReference: isset($data['purchaseReference'])
-                ? PurchaseReference::fromArray($data['purchaseReference'])
-                : null,
+            offer: isset($data['offer']) ? NegotiationOfferDetails::fromArray($data['offer']) : null,
+            purchaseReference: isset($data['purchaseReference']) ? AcceptedOfferPurchaseReference::fromArray($data['purchaseReference']) : null,
         );
     }
 }

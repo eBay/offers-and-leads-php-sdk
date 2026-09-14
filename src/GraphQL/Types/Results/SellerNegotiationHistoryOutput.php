@@ -18,25 +18,16 @@ declare(strict_types=1);
 
 namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 
-readonly class SellerNegotiationHistoryOutput
+abstract readonly class SellerNegotiationHistoryOutput
 {
-    /**
-     * @param ItemNegotiation[] $itemNegotiations
-     */
-    public function __construct(
-        public array $itemNegotiations,
-        public ?Pagination $pagination = null,
-    ) {}
-
-    /** @param array<mixed> $data */
-    public static function fromArray(array $data): self
+    /** @param array<string, mixed> $data */
+    public static function fromArray(array $data): SellerNegotiationHistorySuccess
     {
-        return new self(
-            itemNegotiations: array_map(
-                fn(array $i) => ItemNegotiation::fromArray($i),
-                $data['itemNegotiations'] ?? []
+        return match ($data['__typename'] ?? null) {
+            'SellerNegotiationHistorySuccess' => SellerNegotiationHistorySuccess::fromArray($data),
+            default => throw new \UnexpectedValueException(
+                'Unknown __typename for SellerNegotiationHistoryOutput: ' . ($data['__typename'] ?? 'null')
             ),
-            pagination: isset($data['pagination']) ? Pagination::fromArray($data['pagination']) : null,
-        );
+        };
     }
 }

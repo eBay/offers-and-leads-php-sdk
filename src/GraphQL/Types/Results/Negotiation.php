@@ -20,31 +20,25 @@ namespace EBay\OffersAndLeads\GraphQL\Types\Results;
 
 readonly class Negotiation
 {
-    /**
-     * @param NegotiationOfferDetails[] $offers
-     * @param array{negotiable: bool|null}|null $offerCapabilities
-     * @param array{itemId: string}|null $target  Inline fragment on Item
-     */
     public function __construct(
-        public string $negotiationId,
-        public array $offers,
+        public ?string $negotiationId = null,
+        /** @var NegotiationOfferDetails[] */
+        public array $offers = [],
         public ?NegotiationOfferDetails $latestOffer = null,
-        public ?array $offerCapabilities = null,
-        public ?array $target = null,
+        /** @var NegotiationOfferCapabilities[] */
+        public array $offerCapabilities = [],
+        public Item|null $target = null,
     ) {}
 
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            negotiationId: $data['negotiationId'],
-            offers: array_map(
-                fn(array $o) => NegotiationOfferDetails::fromArray($o),
-                $data['offers'] ?? []
-            ),
+            negotiationId: $data['negotiationId'] ?? null,
+            offers: array_map(fn($item) => NegotiationOfferDetails::fromArray($item), $data['offers'] ?? []),
             latestOffer: isset($data['latestOffer']) ? NegotiationOfferDetails::fromArray($data['latestOffer']) : null,
-            offerCapabilities: $data['offerCapabilities'] ?? null,
-            target: $data['target'] ?? null,
+            offerCapabilities: array_map(fn($item) => NegotiationOfferCapabilities::fromArray($item), $data['offerCapabilities'] ?? []),
+            target: isset($data['target']) ? OfferTarget::fromArray($data['target']) : null,
         );
     }
 }

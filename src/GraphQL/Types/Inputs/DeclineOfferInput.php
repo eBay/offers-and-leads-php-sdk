@@ -26,23 +26,26 @@ readonly class DeclineOfferInput
         public ?string $message = null,
     ) {}
 
-    /** @param array<mixed> $data */
+    /** @param array<string, mixed> $data */
     public static function fromArray(array $data): self
     {
         return new self(
-            itemId:  $data['itemId'],
-            offerId: $data['offerId'],
+            itemId: $data['itemId'],
             message: $data['message'] ?? null,
+            offerId: $data['offerId'],
         );
     }
 
     /** @return array<string, mixed> */
     public function toArray(): array
     {
-        return array_filter([
-            'itemId'  => $this->itemId,
-            'offerId' => $this->offerId,
-            'message' => $this->message,
-        ], fn($v) => $v !== null);
+        return array_filter(
+            [
+                'itemId' => $this->itemId,
+                'message' => $this->message,
+                'offerId' => $this->offerId,
+            ],
+            static fn($value) => $value !== null,
+        );
     }
 }
