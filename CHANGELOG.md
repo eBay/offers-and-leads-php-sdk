@@ -1,14 +1,12 @@
 # ChangeLog
 
-## 1.0.0 (09/14/2026)
+## 0.2.0 (09/14/2026)
 
-**Breaking changes**
-- The following clients were removed:
-  - `LeadsClient`
-- The following members were removed from `OffersAndLeadsClient`:
-  - `$leads`
+### Breaking changes
 
-- The following clients were added:
-  - `ClassifiedLeadsClient`
-- The following members were added to `OffersAndLeadsClient`:
-  - `$classifiedLeads`
+#### Renamed clients and members
+
+| Surface | Previous | Current |
+| --- | --- | --- |
+| REST client | `LeadsClient` | `ClassifiedLeadsClient` |
+| `OffersAndLeadsClient` member | `$leads` | `$classifiedLeads` |
