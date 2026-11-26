@@ -32,13 +32,18 @@ final class KiotaAuthProvider implements AccessTokenProvider
      */
     public function __construct(
         private readonly string $token,
-        array $allowedHosts,
+        private readonly array $allowedHosts,
     ) {
         $this->allowedHostsValidator = new AllowedHostsValidator($allowedHosts);
     }
 
     public function getAuthorizationTokenAsync(string $url, array $additionalAuthenticationContext = []): Promise
     {
+        // Never hand the token to a host outside the trusted list, or over plain http off loopback.
+        // An empty list trusts nothing, unlike Kiota's AllowedHostsValidator.
+        if (OffersAndLeadsConfiguration::untrustedReason($url, $this->allowedHosts) !== null) {
+            return new FulfilledPromise('');
+        }
         return new FulfilledPromise($this->token);
     }
 
