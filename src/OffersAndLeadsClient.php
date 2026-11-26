@@ -21,6 +21,7 @@ namespace EBay\OffersAndLeads;
 use EBay\OffersAndLeads\Clients\GraphQL\DynamicGraphQLClient;
 use EBay\OffersAndLeads\Clients\GraphQL\OffersGraphQLClient;
 use EBay\OffersAndLeads\Clients\Rest\ClassifiedLeadsClient;
+use EBay\OffersAndLeads\Clients\Rest\NegotiationClient;
 use EBay\OffersAndLeads\Configuration\OffersAndLeadsConfiguration;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\HandlerStack;
@@ -33,6 +34,7 @@ use Psr\Http\Message\ResponseInterface;
 final class OffersAndLeadsClient
 {
     public readonly ClassifiedLeadsClient $classifiedLeads;
+    public readonly NegotiationClient $negotiation;
     public readonly OffersGraphQLClient $offers;
 
     public function __construct(
@@ -42,6 +44,7 @@ final class OffersAndLeadsClient
         $guzzle ??= $this->buildGuzzle($config);
 
         $this->classifiedLeads = new ClassifiedLeadsClient($guzzle, $config);
+        $this->negotiation = new NegotiationClient($guzzle, $config);
 
         $this->offers = new OffersGraphQLClient(
             new DynamicGraphQLClient($guzzle, $config)

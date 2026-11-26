@@ -18,6 +18,13 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+KIOTA_VERSION=$(kiota --version 2>/dev/null | cut -d'+' -f1)
+if [ "$KIOTA_VERSION" != "1.35.0" ]; then
+  echo "Error: kiota 1.35.0 required, found '${KIOTA_VERSION:-not installed}'"
+  echo "See https://learn.microsoft.com/en-us/openapi/kiota/install for installation options."
+  exit 1
+fi
+
 echo "Regenerating REST clients via Kiota..."
 rm -rf src/Generated
 
@@ -26,6 +33,13 @@ kiota generate -l php \
   -c ClassifiedLeadsApiClient \
   -n 'EBay\OffersAndLeads\Generated\ClassifiedLeads' \
   -o src/Generated/ClassifiedLeads \
+  --ebc --co
+
+kiota generate -l php \
+  -d specs/openapi/negotiation.json \
+  -c NegotiationApiClient \
+  -n 'EBay\OffersAndLeads\Generated\Negotiation' \
+  -o src/Generated/Negotiation \
   --ebc --co
 
 echo "Adding license headers to generated files..."
